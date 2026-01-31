@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Svatba – informace</title>
+  <meta name="description" content="Informace ke svatbě: harmonogram, místo, doprava, ubytování, FAQ." />
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#101826;
+      --text:#eaf0ff;
+      --muted:#a7b3cc;
+      --brand:#7dd3fc;
+      --brand2:#a78bfa;
+      --line:rgba(255,255,255,.08);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 980px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    body{
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 10% 0%, rgba(125,211,252,.18), transparent 60%),
+                  radial-gradient(1000px 700px at 95% 10%, rgba(167,139,250,.16), transparent 55%),
+                  var(--bg);
+      line-height:1.55;
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    header{
+      padding:28px 0 10px;
+      display:flex; gap:18px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
+    }
+    .title h1{margin:0;font-size:clamp(28px, 4vw, 44px); letter-spacing:.2px}
+    .title p{margin:8px 0 0; color:var(--muted); max-width:64ch}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; border:1px solid var(--line); border-radius:999px;
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 1px 0 rgba(255,255,255,.05) inset;
+      white-space:nowrap;
+    }
+    nav{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,20,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .navin{
+      max-width:var(--max); margin:0 auto; padding:10px 24px;
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .btn{
+      border:1px solid var(--line); background: rgba(255,255,255,.03); color:var(--text);
+      padding:10px 12px; border-radius:999px; cursor:pointer;
+      font-weight:600; font-size:14px;
+    }
+    .btn:hover{border-color:rgba(255,255,255,.16)}
+    .btn.primary{border-color:rgba(125,211,252,.35); background: rgba(125,211,252,.12)}
+    main{padding:18px 0 64px}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+    }
+    .card{
+      grid-column: span 12;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .card h2{margin:0 0 10px; font-size:22px}
+    .card p{margin:0 0 10px; color:var(--muted)}
+    .two{grid-column: span 12}
+    @media (min-width: 860px){
+      .two{grid-column: span 6}
+      .three{grid-column: span 4}
+    }
+    .kvs{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    .kv{padding:10px 12px; border:1px dashed rgba(255,255,255,.14); border-radius:14px; color:var(--muted)}
+    .kv b{color:var(--text)}
+    .timeline{margin:12px 0 0; padding:0; list-style:none}
+    .timeline li{
+      display:flex; gap:12px; padding:12px 0;
+      border-top:1px solid var(--line);
+    }
+    .time{
+      min-width:72px; font-weight:800; color:var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+    .what{color:var(--muted)}
+    .row{display:flex; gap:12px; flex-wrap:wrap}
+    .row .btn{flex:0 0 auto}
+    .notice{
+      border:1px solid rgba(167,139,250,.25);
+      background: rgba(167,139,250,.08);
+      padding:12px 14px;
+      border-radius: 14px;
+      color: var(--muted);
+    }
+    details{
+      border-top: 1px solid var(--line);
+      padding: 12px 0;
+    }
+    summary{cursor:pointer; font-weight:700}
+    footer{color:var(--muted); border-top:1px solid var(--line); padding:18px 0}
+    .small{font-size:13px}
+    .hide{display:none}
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="navin">
+      <a class="btn" href="#top">Úvod</a>
+      <a class="btn" href="#harmonogram">Harmonogram</a>
+      <a class="btn" href="#misto">Místo</a>
+      <a class="btn" href="#doprava">Doprava</a>
+      <a class="btn" href="#ubytovani">Ubytování</a>
+      <a class="btn" href="#faq">FAQ</a>
+      <a class="btn primary" href="#kontakt">Kontakt</a>
+    </div>
+  </nav>
+
+  <div class="wrap" id="top">
+    <header>
+      <div class="title">
+        <h1>Martin &amp; … 💍</h1>
+        <p>
+          Všechny důležité informace k naší svatbě na jednom místě.
+          Ulož si stránku do záložek – budeme ji průběžně aktualizovat.
+        </p>
+
+        <div class="kvs">
+          <div class="kv"><b>Datum:</b> 00.00.2026</div>
+          <div class="kv"><b>Čas:</b> obřad 00:00</div>
+          <div class="kv"><b>Místo:</b> Název lokace</div>
+          <div class="kv"><b>Dress code:</b> smart casual</div>
+        </div>
+      </div>
+
+      <div class="pill" title="Rychlá akce">
+        <span>📍</span>
+        <a href="#misto"><b>Otevřít mapu</b></a>
+      </div>
+    </header>
+
+    <main class="grid">
+
+      <section class="card two" id="harmonogram">
+        <h2>Harmonogram dne</h2>
+        <p>Časy jsou orientační. Když se něco změní, přepíšeme to tady.</p>
+
+        <ul class="timeline">
+          <li>
+            <div class="time">13:30</div>
+            <div class="what"><b>Příjezd hostů</b> – welcome drink</div>
+          </li>
+          <li>
+            <div class="time">15:00</div>
+            <div class="what"><b>Obřad</b></div>
+          </li>
+          <li>
+            <div class="time">16:00</div>
+            <div class="what"><b>Gratulace + focení</b></div>
+          </li>
+          <li>
+            <div class="time">17:30</div>
+            <div class="what"><b>Hostina</b></div>
+          </li>
+          <li>
+            <div class="time">20:00</div>
+            <div class="what"><b>První tanec</b> + párty</div>
+          </li>
+          <li>
+            <div class="time">23:30</div>
+            <div class="what"><b>Půlnoční překvapení</b></div>
+          </li>
+        </ul>
+
+        <div class="notice">
+          Tip: Pokud chceš přidat „program pro děti“, „vegetariánské okno“, „odjezdy taxi“, dej to jako další řádky do harmonogramu.
+        </div>
+      </section>
+
+      <section class="card two" id="misto">
+        <h2>Místo konání</h2>
+        <p>
+          <b>Název lokace</b><br />
+          Ulice 123, 110 00 Město
+        </p>
+
+        <div class="row">
+          <a class="btn primary" target="_blank" rel="noopener"
+             href="https://www.google.com/maps?q=Prague">
+            Otevřít v Google Maps
+          </a>
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/dir/?api=1&destination=Prague">
+            Navigovat sem
+          </a>
+        </div>
+
+        <p class="small" style="margin-top:12px">
+          Jakmile budeš znát přesnou adresu, jen přepiš „Prague“ v odkazech na svůj cíl
+          (nebo tam vlož GPS souřadnice).
+        </p>
+      </section>
+
+      <section class="card three" id="doprava">
+        <h2>Doprava &amp; parkování</h2>
+        <p>
+          Napiš sem stručně: kde se dá parkovat, jestli je závora, a jestli doporučujete taxi.
+        </p>
+        <ul style="margin:0; padding-left:18px; color:var(--muted)">
+          <li>Parkování: …</li>
+          <li>Nejbližší zastávka: …</li>
+          <li>Taxi: …</li>
+        </ul>
+      </section>
+
+      <section class="card three" id="ubytovani">
+        <h2>Ubytování</h2>
+        <p>Doporučené možnosti v okolí.</p>
+        <ul style="margin:0; padding-left:18px; color:var(--muted)">
+          <li>Hotel A – cca 5 min autem</li>
+          <li>Penzion B – cca 10 min pěšky</li>
+          <li>Další tipy doplníme</li>
+        </ul>
+      </section>
+
+      <section class="card three">
+        <h2>Dary</h2>
+        <p>
+          Krátká věta, co preferujete. (Např. „Nejvíc nás potěší příspěvek na …“ nebo „budeme rádi za …“)
+        </p>
+        <div class="notice small">
+          Pokud chceš, můžeme sem přidat QR kód na účet / seznam přání – čistě jako volitelnou sekci.
+        </div>
+      </section>
+
+      <section class="card" id="faq">
+        <h2>FAQ</h2>
+        <p>Nejčastější otázky hostů na jednom místě.</p>
+
+        <details>
+          <summary>Do kdy dát vědět účast?</summary>
+          <div class="small" style="color:var(--muted); margin-top:8px;">
+            Napiš datum RSVP a způsob (SMS / formulář / e-mail).
+          </div>
+        </details>
+
+        <details>
+          <summary>Co když mám dietní omezení?</summary>
+          <div class="small" style="color:var(--muted); margin-top:8px;">
+            Napiš, kam mají hosté poslat informace (např. „napiš Martinovi“).
+          </div>
+        </details>
+
+        <details>
+          <summary>Jsou vítané děti?</summary>
+          <div class="small" style="color:var(--muted); margin-top:8px;">
+            Doplň pravidla podle vás.
+          </div>
+        </details>
+
+        <details>
+          <summary>Jaký je dress code?</summary>
+          <div class="small" style="color:var(--muted); margin-top:8px;">
+            Doplň konkrétní styl, barvy, doporučení k obuvi atd.
+          </div>
+        </details>
+      </section>
+
+      <section class="card" id="kontakt">
+        <h2>Kontakt</h2>
+        <p>Když si nebudeš jistý/á, napiš nebo zavolej.</p>
+
+        <div class="kvs">
+          <div class="kv"><b>Martin:</b> +420 000 000 000</div>
+          <div class="kv"><b>Svědek/svědkyně:</b> +420 000 000 000</div>
+          <div class="kv"><b>E-mail:</b> svatba@example.com</div>
+        </div>
+
+        <p class="small" style="margin-top:12px; color:var(--muted)">
+          Chceš-li, přidám sem i formulář pro RSVP (bez backendu) přes Google Forms / Tally.
+        </p>
+      </section>
+
+    </main>
+
+    <footer class="small">
+      Aktualizováno: <span id="updated"></span>
+    </footer>
+  </div>
+
+  <script>
+    // automatické datum "Aktualizováno"
+    const d = new Date();
+    document.getElementById("updated").textContent =
+      d.toLocaleDateString("cs-CZ", { year:"numeric", month:"long", day:"numeric" });
+
+    // hladké posouvání v rámci stránky (funguje i bez toho, ale je to příjemnější)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth", block:"start"});
+        history.pushState(null, "", id);
+      });
+    });
+  </script>
+</body>
+</html>
