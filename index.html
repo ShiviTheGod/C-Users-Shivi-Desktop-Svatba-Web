@@ -8,21 +8,21 @@
 
   <style>
     :root{
-      --bg: #fbfaf8;
-      --paper: rgba(255,255,255,.82);
-      --text: #1f2937;
-      --muted: #6b7280;
+      --bg:#fbfaf8;
+      --paper: rgba(255,255,255,.90);
+      --text:#111827;
+      --muted:#6b7280;
 
-      --brand: #7fae9c;   /* šalvěj */
-      --brand2:#d2a5bc;   /* pudrová růžová */
-      --gold: #e8d2a2;    /* tlumená zlatá */
+      --brand:#7fae9c;     /* šalvěj */
+      --brand2:#d2a5bc;    /* pudrová růžová */
+      --gold:#e7d6b0;      /* tlumená zlatá */
 
-      --line: rgba(31,41,55,.10);
-      --shadow: 0 18px 40px rgba(17,24,39,.08);
+      --line: rgba(17,24,39,.10);
+      --shadow: 0 18px 45px rgba(17,24,39,.07);
       --radius: 18px;
       --max: 980px;
 
-      --h1: clamp(30px, 3.6vw, 44px);
+      --h1: clamp(34px, 4.2vw, 54px);
       --h2: 20px;
       --base: 16px;
       --small: 13px;
@@ -36,62 +36,25 @@
       line-height: 1.65;
       color: var(--text);
       background:
-        radial-gradient(950px 650px at 12% 0%, rgba(127,174,156,.18), transparent 60%),
-        radial-gradient(900px 600px at 92% 5%, rgba(210,165,188,.16), transparent 55%),
-        radial-gradient(800px 520px at 55% 100%, rgba(232,210,162,.10), transparent 60%),
+        radial-gradient(1100px 720px at 12% 0%, rgba(127,174,156,.18), transparent 62%),
+        radial-gradient(1050px 680px at 92% 5%, rgba(210,165,188,.16), transparent 58%),
+        radial-gradient(900px 560px at 55% 100%, rgba(231,214,176,.10), transparent 62%),
         var(--bg);
-      overflow-x: hidden;
+      overflow-x:hidden;
     }
 
-    /* Jemná „luční“ textura přes SVG (velmi subtilní) */
-    body::before{
-      content:"";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .16;
-      background-image: url('data:image/svg+xml;utf8,\
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420">\
-<g fill="none" stroke="rgba(31,41,55,0.18)" stroke-width="1">\
-<path d="M64 86c18 26 28 46 30 70" />\
-<path d="M96 110c12 18 18 32 18 50" />\
-<path d="M335 92c-20 24-32 44-36 70" />\
-<path d="M304 118c-12 16-18 30-18 48" />\
-<path d="M120 318c18-26 28-46 30-70" />\
-<path d="M150 292c12-18 18-32 18-50" />\
-<path d="M300 326c-20-24-32-44-36-70" />\
-<path d="M270 300c-12-16-18-30-18-48" />\
-</g>\
-<g fill="rgba(127,174,156,0.22)">\
-<circle cx="92" cy="168" r="3" />\
-<circle cx="112" cy="160" r="2.5" />\
-<circle cx="300" cy="174" r="3" />\
-<circle cx="284" cy="164" r="2.5" />\
-</g>\
-<g fill="rgba(210,165,188,0.20)">\
-<circle cx="150" cy="250" r="3" />\
-<circle cx="164" cy="262" r="2.5" />\
-<circle cx="260" cy="248" r="3" />\
-<circle cx="244" cy="260" r="2.5" />\
-</g>\
-</svg>');
-      background-size: 420px 420px;
-      background-repeat: repeat;
-      filter: blur(.2px);
-    }
+    a{color: var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
 
-    a{color: var(--brand); text-decoration: none}
-    a:hover{text-decoration: underline}
+    .wrap{max-width: var(--max); margin: 0 auto; padding: 28px 22px 78px}
 
-    .wrap{max-width: var(--max); margin: 0 auto; padding: 28px 22px 70px}
-
-    /* Horní lišta */
+    /* Nav */
     nav{
       position: sticky;
       top: 0;
       z-index: 20;
       backdrop-filter: blur(10px);
-      background: rgba(251,250,248,.70);
+      background: rgba(251,250,248,.72);
       border-bottom: 1px solid var(--line);
     }
     .navin{
@@ -99,14 +62,14 @@
       margin: 0 auto;
       padding: 10px 22px;
       display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
     }
 
     .btn{
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.65);
+      background: rgba(255,255,255,.70);
       color: var(--text);
       padding: 10px 12px;
       border-radius: 999px;
@@ -115,44 +78,115 @@
       letter-spacing: .1px;
       cursor: pointer;
     }
-    .btn:hover{border-color: rgba(31,41,55,.18)}
+    .btn:hover{border-color: rgba(17,24,39,.16)}
     .btn.primary{
       border-color: rgba(127,174,156,.55);
       background: rgba(127,174,156,.18);
     }
 
+    /* Header (Editorial) */
     header{
-      padding: 26px 0 16px;
+      position: relative;
+      margin-top: 8px;
+      padding: 34px 20px 22px;
+      border: 1px solid rgba(17,24,39,.08);
+      border-radius: 24px;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 18px 60px rgba(17,24,39,.06);
+      overflow: hidden;
+    }
+
+    /* Floral corners (jemné SVG jen v rozích) */
+    header::before, header::after{
+      content:"";
+      position:absolute;
+      width: 420px;
+      height: 220px;
+      opacity: .60;
+      pointer-events:none;
+      background-repeat:no-repeat;
+      background-size:contain;
+      filter: blur(.0px);
+    }
+    header::before{
+      left: -10px;
+      top: -16px;
+      background-image: url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="280" viewBox="0 0 520 280">\
+<g fill="none" stroke="rgba(17,24,39,0.20)" stroke-width="1.2" stroke-linecap="round">\
+<path d="M70 210c40-60 40-105 10-150" />\
+<path d="M92 212c36-56 30-96 4-138" />\
+<path d="M118 214c30-44 26-80 8-120" />\
+<path d="M140 216c24-34 22-62 10-96" />\
+</g>\
+<g fill="rgba(127,174,156,0.25)">\
+<circle cx="85" cy="135" r="4" /><circle cx="112" cy="120" r="3.5" /><circle cx="132" cy="154" r="3.5" />\
+</g>\
+<g fill="rgba(210,165,188,0.22)">\
+<circle cx="120" cy="176" r="4" /><circle cx="150" cy="160" r="3.5" /><circle cx="98" cy="162" r="3.5" />\
+</g>\
+<g fill="rgba(231,214,176,0.22)">\
+<circle cx="160" cy="192" r="3.5" /><circle cx="144" cy="130" r="3" />\
+</g>\
+</svg>');
+    }
+    header::after{
+      right: -12px;
+      bottom: -20px;
+      transform: rotate(180deg);
+      background-image: url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="280" viewBox="0 0 520 280">\
+<g fill="none" stroke="rgba(17,24,39,0.20)" stroke-width="1.2" stroke-linecap="round">\
+<path d="M70 210c40-60 40-105 10-150" />\
+<path d="M92 212c36-56 30-96 4-138" />\
+<path d="M118 214c30-44 26-80 8-120" />\
+<path d="M140 216c24-34 22-62 10-96" />\
+</g>\
+<g fill="rgba(127,174,156,0.25)">\
+<circle cx="85" cy="135" r="4" /><circle cx="112" cy="120" r="3.5" /><circle cx="132" cy="154" r="3.5" />\
+</g>\
+<g fill="rgba(210,165,188,0.22)">\
+<circle cx="120" cy="176" r="4" /><circle cx="150" cy="160" r="3.5" /><circle cx="98" cy="162" r="3.5" />\
+</g>\
+<g fill="rgba(231,214,176,0.22)">\
+<circle cx="160" cy="192" r="3.5" /><circle cx="144" cy="130" r="3" />\
+</g>\
+</svg>');
+    }
+
+    .headin{
+      position: relative;
       display:flex;
       gap: 18px;
-      align-items: flex-start;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
     }
 
     .title h1{
       margin: 0;
       font-size: var(--h1);
-      letter-spacing: .2px;
-      font-weight: 780;
+      letter-spacing: .25px;
+      font-weight: 820;
     }
-    .title p{
+    .title .lead{
       margin: 12px 0 0;
       color: var(--muted);
-      max-width: 70ch;
+      max-width: 72ch;
+      font-size: 16px;
     }
 
     .meta{
-      margin-top: 14px;
+      margin-top: 16px;
       display:flex;
-      flex-wrap: wrap;
+      flex-wrap:wrap;
       gap: 10px;
     }
     .chip{
       padding: 10px 12px;
-      border: 1px solid rgba(31,41,55,.12);
+      border: 1px solid rgba(17,24,39,.10);
       border-radius: 14px;
-      background: rgba(255,255,255,.62);
+      background: rgba(255,255,255,.68);
       color: var(--muted);
       font-size: 14px;
     }
@@ -160,29 +194,31 @@
 
     .side{
       display:flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
     .badge{
-      border: 1px solid rgba(232,210,162,.55);
-      background: rgba(232,210,162,.18);
+      border: 1px solid rgba(231,214,176,.55);
+      background: rgba(231,214,176,.18);
       color: var(--text);
       padding: 10px 12px;
       border-radius: 999px;
       font-size: 14px;
       font-weight: 650;
-      white-space: nowrap;
+      white-space:nowrap;
     }
 
     /* Layout */
-    main{padding-top: 8px}
+    main{padding-top: 18px}
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
     }
 
+    /* Card minimal */
     .card{
       grid-column: span 12;
       background: var(--paper);
@@ -205,7 +241,7 @@
       .three{grid-column: span 4}
     }
 
-    /* Odpočet */
+    /* Countdown */
     .countdown{
       display:flex;
       gap: 12px;
@@ -216,22 +252,22 @@
     .cd{
       min-width: 128px;
       padding: 14px 14px 12px;
-      border: 1px solid rgba(31,41,55,.12);
+      border: 1px solid rgba(17,24,39,.12);
       border-radius: 16px;
-      background: rgba(255,255,255,.70);
+      background: rgba(255,255,255,.76);
     }
     .num{
       font-size: 34px;
-      font-weight: 820;
+      font-weight: 860;
       letter-spacing: .6px;
       font-variant-numeric: tabular-nums;
     }
     .lab{
       margin-top: 2px;
       color: var(--muted);
-      font-weight: 650;
+      font-weight: 700;
       font-size: var(--small);
-      letter-spacing: .2px;
+      letter-spacing: .22px;
       text-transform: uppercase;
     }
     .subline{
@@ -249,8 +285,8 @@
       border-top: 1px solid var(--line);
     }
     .time{
-      min-width: 86px;
-      font-weight: 800;
+      min-width: 90px;
+      font-weight: 820;
       color: var(--text);
       font-variant-numeric: tabular-nums;
       letter-spacing: .2px;
@@ -265,7 +301,7 @@
     }
     summary{
       cursor: pointer;
-      font-weight: 700;
+      font-weight: 720;
       letter-spacing: .1px;
     }
 
@@ -305,24 +341,27 @@
   </nav>
 
   <div class="wrap" id="top">
+
     <header>
-      <div class="title">
-        <h1>Aneta &amp; Martin Šivelovi</h1>
-        <p>
-          Informace k našemu svatebnímu dni na jednom místě. Stránku budeme průběžně doplňovat.
-        </p>
+      <div class="headin">
+        <div class="title">
+          <h1>Aneta &amp; Martin Šivelovi</h1>
+          <p class="lead">
+            Informace k našemu svatebnímu dni na jednom místě. Stránku budeme průběžně doplňovat.
+          </p>
 
-        <div class="meta">
-          <div class="chip"><b>Datum:</b> 22. 08. 2026</div>
-          <div class="chip"><b>Obřad:</b> 11:00</div>
-          <div class="chip"><b>Místo:</b> Penzion Mezi Vinohrady, Hovorany 696 12</div>
-          <div class="chip"><b>Dress code:</b> podle vašeho pohodlí</div>
+          <div class="meta">
+            <div class="chip"><b>Datum:</b> 22. 08. 2026</div>
+            <div class="chip"><b>Obřad:</b> 11:00</div>
+            <div class="chip"><b>Místo:</b> Penzion Mezi Vinohrady, Hovorany 696 12</div>
+            <div class="chip"><b>Dress code:</b> podle vašeho pohodlí</div>
+          </div>
         </div>
-      </div>
 
-      <div class="side">
-        <div class="badge">Penzion Mezi Vinohrady</div>
-        <a class="btn" href="#misto">Mapa</a>
+        <div class="side">
+          <div class="badge">Penzion Mezi Vinohrady</div>
+          <a class="btn" href="#misto">Mapa</a>
+        </div>
       </div>
     </header>
 
