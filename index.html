@@ -4,103 +4,200 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Aneta & Martin Šivelovi – svatba</title>
-  <meta name="description" content="Informace ke svatbě: harmonogram, místo, doprava, ubytování, FAQ." />
+  <meta name="description" content="Informace ke svatbě: odpočet, harmonogram, místo, doprava, ubytování, FAQ." />
 
   <style>
     :root{
-      --bg:#fbfaf8;
-      --card:#ffffffcc;
-      --text:#1f2937;
-      --muted:#6b7280;
+      --bg: #fbfaf8;
+      --paper: rgba(255,255,255,.82);
+      --text: #1f2937;
+      --muted: #6b7280;
 
-      --brand:#8ab4a6;   /* šalvěj */
-      --brand2:#d7a9c3;  /* pudrová růžová */
+      --brand: #7fae9c;   /* šalvěj */
+      --brand2:#d2a5bc;   /* pudrová růžová */
+      --gold: #e8d2a2;    /* tlumená zlatá */
 
-      --line:rgba(31,41,55,.10);
-      --shadow: 0 10px 26px rgba(17,24,39,.08);
+      --line: rgba(31,41,55,.10);
+      --shadow: 0 18px 40px rgba(17,24,39,.08);
       --radius: 18px;
       --max: 980px;
+
+      --h1: clamp(30px, 3.6vw, 44px);
+      --h2: 20px;
+      --base: 16px;
+      --small: 13px;
     }
 
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    html,body{margin:0;padding:0}
     body{
-      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial;
+      font-size: var(--base);
+      line-height: 1.65;
+      color: var(--text);
       background:
-        radial-gradient(900px 600px at 10% 0%, rgba(138,180,166,.20), transparent 60%),
-        radial-gradient(900px 600px at 95% 5%, rgba(215,169,195,.18), transparent 55%),
-        radial-gradient(800px 520px at 50% 100%, rgba(255,215,102,.10), transparent 60%),
+        radial-gradient(950px 650px at 12% 0%, rgba(127,174,156,.18), transparent 60%),
+        radial-gradient(900px 600px at 92% 5%, rgba(210,165,188,.16), transparent 55%),
+        radial-gradient(800px 520px at 55% 100%, rgba(232,210,162,.10), transparent 60%),
         var(--bg);
-      line-height:1.6;
+      overflow-x: hidden;
     }
 
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
-
-    header{
-      padding:28px 0 10px;
-      display:flex; gap:18px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
+    /* Jemná „luční“ textura přes SVG (velmi subtilní) */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image: url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420">\
+<g fill="none" stroke="rgba(31,41,55,0.18)" stroke-width="1">\
+<path d="M64 86c18 26 28 46 30 70" />\
+<path d="M96 110c12 18 18 32 18 50" />\
+<path d="M335 92c-20 24-32 44-36 70" />\
+<path d="M304 118c-12 16-18 30-18 48" />\
+<path d="M120 318c18-26 28-46 30-70" />\
+<path d="M150 292c12-18 18-32 18-50" />\
+<path d="M300 326c-20-24-32-44-36-70" />\
+<path d="M270 300c-12-16-18-30-18-48" />\
+</g>\
+<g fill="rgba(127,174,156,0.22)">\
+<circle cx="92" cy="168" r="3" />\
+<circle cx="112" cy="160" r="2.5" />\
+<circle cx="300" cy="174" r="3" />\
+<circle cx="284" cy="164" r="2.5" />\
+</g>\
+<g fill="rgba(210,165,188,0.20)">\
+<circle cx="150" cy="250" r="3" />\
+<circle cx="164" cy="262" r="2.5" />\
+<circle cx="260" cy="248" r="3" />\
+<circle cx="244" cy="260" r="2.5" />\
+</g>\
+</svg>');
+      background-size: 420px 420px;
+      background-repeat: repeat;
+      filter: blur(.2px);
     }
 
-    .title h1{margin:0;font-size:clamp(28px, 4vw, 44px); letter-spacing:.2px}
-    .title p{margin:10px 0 0; color:var(--muted); max-width:68ch}
+    a{color: var(--brand); text-decoration: none}
+    a:hover{text-decoration: underline}
 
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px; border:1px solid var(--line); border-radius:999px;
-      background: rgba(255,255,255,.55);
-      box-shadow: 0 1px 0 rgba(255,255,255,.7) inset;
-      white-space:nowrap;
-    }
+    .wrap{max-width: var(--max); margin: 0 auto; padding: 28px 22px 70px}
 
+    /* Horní lišta */
     nav{
-      position:sticky; top:0; z-index:10;
+      position: sticky;
+      top: 0;
+      z-index: 20;
       backdrop-filter: blur(10px);
-      background: rgba(251,250,248,.75);
-      border-bottom:1px solid var(--line);
+      background: rgba(251,250,248,.70);
+      border-bottom: 1px solid var(--line);
     }
     .navin{
-      max-width:var(--max); margin:0 auto; padding:10px 24px;
-      display:flex; gap:10px; flex-wrap:wrap;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 10px 22px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
     .btn{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.6);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:999px;
-      cursor:pointer;
-      font-weight:650;
-      font-size:14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 650;
+      font-size: 14px;
+      letter-spacing: .1px;
+      cursor: pointer;
     }
-    .btn:hover{border-color:rgba(31,41,55,.18)}
+    .btn:hover{border-color: rgba(31,41,55,.18)}
     .btn.primary{
-      border-color:rgba(138,180,166,.45);
-      background: rgba(138,180,166,.20);
+      border-color: rgba(127,174,156,.55);
+      background: rgba(127,174,156,.18);
     }
 
-    main{padding:18px 0 64px}
+    header{
+      padding: 26px 0 16px;
+      display:flex;
+      gap: 18px;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
 
+    .title h1{
+      margin: 0;
+      font-size: var(--h1);
+      letter-spacing: .2px;
+      font-weight: 780;
+    }
+    .title p{
+      margin: 12px 0 0;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .meta{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip{
+      padding: 10px 12px;
+      border: 1px solid rgba(31,41,55,.12);
+      border-radius: 14px;
+      background: rgba(255,255,255,.62);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .chip b{color: var(--text)}
+
+    .side{
+      display:flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .badge{
+      border: 1px solid rgba(232,210,162,.55);
+      background: rgba(232,210,162,.18);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    /* Layout */
+    main{padding-top: 8px}
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap:16px;
+      gap: 16px;
     }
 
     .card{
       grid-column: span 12;
-      background: var(--card);
-      border:1px solid var(--line);
+      background: var(--paper);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding:18px;
+      padding: 18px;
     }
-
-    .card h2{margin:0 0 10px; font-size:22px}
-    .card p{margin:0 0 10px; color:var(--muted)}
+    .card h2{
+      margin: 0 0 10px;
+      font-size: var(--h2);
+      letter-spacing: .15px;
+      font-weight: 740;
+    }
+    .card p{margin:0 0 10px; color: var(--muted)}
 
     .two{grid-column: span 12}
     @media (min-width: 860px){
@@ -108,73 +205,87 @@
       .three{grid-column: span 4}
     }
 
-    .kvs{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
-    .kv{
-      padding:10px 12px;
-      border:1px dashed rgba(31,41,55,.18);
-      border-radius:14px;
-      color:var(--muted);
-      background: rgba(255,255,255,.55);
+    /* Odpočet */
+    .countdown{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin-top: 8px;
     }
-    .kv b{color:var(--text)}
-
-    .timeline{margin:12px 0 0; padding:0; list-style:none}
-    .timeline li{
-      display:flex; gap:12px; padding:12px 0;
-      border-top:1px solid var(--line);
+    .cd{
+      min-width: 128px;
+      padding: 14px 14px 12px;
+      border: 1px solid rgba(31,41,55,.12);
+      border-radius: 16px;
+      background: rgba(255,255,255,.70);
     }
-    .time{
-      min-width:78px;
-      font-weight:800;
-      color:var(--text);
+    .num{
+      font-size: 34px;
+      font-weight: 820;
+      letter-spacing: .6px;
       font-variant-numeric: tabular-nums;
     }
-    .what{color:var(--muted)}
-
-    .row{display:flex; gap:12px; flex-wrap:wrap}
-    .row .btn{flex:0 0 auto}
-
-    .notice{
-      border:1px solid rgba(215,169,195,.35);
-      background: rgba(215,169,195,.12);
-      padding:12px 14px;
-      border-radius: 14px;
+    .lab{
+      margin-top: 2px;
       color: var(--muted);
+      font-weight: 650;
+      font-size: var(--small);
+      letter-spacing: .2px;
+      text-transform: uppercase;
+    }
+    .subline{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: var(--small);
     }
 
+    /* Harmonogram */
+    .timeline{margin: 12px 0 0; padding: 0; list-style: none}
+    .timeline li{
+      display:flex;
+      gap: 14px;
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+    }
+    .time{
+      min-width: 86px;
+      font-weight: 800;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: .2px;
+    }
+    .what{color: var(--muted)}
+    .what b{color: var(--text)}
+
+    /* FAQ */
     details{
       border-top: 1px solid var(--line);
       padding: 12px 0;
     }
-    summary{cursor:pointer; font-weight:700}
+    summary{
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: .1px;
+    }
 
-    footer{color:var(--muted); border-top:1px solid var(--line); padding:18px 0}
-    .small{font-size:13px}
+    /* Utility */
+    .row{display:flex; gap: 12px; flex-wrap: wrap}
+    .small{font-size: var(--small)}
+    .note{
+      border: 1px solid rgba(127,174,156,.35);
+      background: rgba(127,174,156,.10);
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: var(--muted);
+    }
 
-    /* Odpočet */
-    .countdown{
-      display:flex; gap:12px; flex-wrap:wrap; align-items:stretch;
-      margin-top:10px;
-    }
-    .cd{
-      min-width:120px;
-      padding:14px 14px 12px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background: rgba(255,255,255,.70);
-    }
-    .num{
-      font-size:34px;
-      font-weight:800;
-      letter-spacing:.5px;
-      font-variant-numeric: tabular-nums;
-    }
-    .lab{
-      margin-top:2px;
-      color:var(--muted);
-      font-weight:650;
-      font-size:13px;
-      letter-spacing:.2px;
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      font-size: var(--small);
     }
   </style>
 </head>
@@ -198,21 +309,20 @@
       <div class="title">
         <h1>Aneta &amp; Martin Šivelovi</h1>
         <p>
-          Všechny důležité informace k naší svatbě na jednom místě.
-          Ulož si stránku do záložek – budeme ji průběžně aktualizovat.
+          Informace k našemu svatebnímu dni na jednom místě. Stránku budeme průběžně doplňovat.
         </p>
 
-        <div class="kvs">
-          <div class="kv"><b>Datum:</b> 22. 08. 2026</div>
-          <div class="kv"><b>Čas:</b> obřad 11:00</div>
-          <div class="kv"><b>Místo:</b> Penzion Mezi Vinohrady, Hovorany 696 12</div>
-          <div class="kv"><b>Dress code:</b> (doplníme)</div>
+        <div class="meta">
+          <div class="chip"><b>Datum:</b> 22. 08. 2026</div>
+          <div class="chip"><b>Obřad:</b> 11:00</div>
+          <div class="chip"><b>Místo:</b> Penzion Mezi Vinohrady, Hovorany 696 12</div>
+          <div class="chip"><b>Dress code:</b> podle vašeho pohodlí</div>
         </div>
       </div>
 
-      <div class="pill" title="Rychlá akce">
-        <span>📍</span>
-        <a href="#misto"><b>Otevřít mapu</b></a>
+      <div class="side">
+        <div class="badge">Penzion Mezi Vinohrady</div>
+        <a class="btn" href="#misto">Mapa</a>
       </div>
     </header>
 
@@ -220,38 +330,38 @@
 
       <section class="card" id="odpocet">
         <h2>Odpočet do obřadu</h2>
-        <p>Počítáme to na sekundy 🙂</p>
+        <p>22. 08. 2026 v 11:00</p>
 
         <div class="countdown" aria-live="polite">
           <div class="cd">
             <div class="num" id="cdDays">–</div>
-            <div class="lab">dní</div>
+            <div class="lab">Dní</div>
           </div>
           <div class="cd">
             <div class="num" id="cdHours">–</div>
-            <div class="lab">hodin</div>
+            <div class="lab">Hodin</div>
           </div>
           <div class="cd">
             <div class="num" id="cdMins">–</div>
-            <div class="lab">minut</div>
+            <div class="lab">Minut</div>
           </div>
           <div class="cd">
             <div class="num" id="cdSecs">–</div>
-            <div class="lab">sekund</div>
+            <div class="lab">Sekund</div>
           </div>
         </div>
 
-        <p class="small" id="cdNote" style="margin:12px 0 0; color:var(--muted)"></p>
+        <div class="subline" id="cdNote"></div>
       </section>
 
       <section class="card two" id="harmonogram">
         <h2>Harmonogram dne</h2>
-        <p>Časy jsou orientační. Jakmile budou finální, doplníme.</p>
+        <p>Časy jsou orientační. Jakmile budou finální, doplníme je zde.</p>
 
         <ul class="timeline">
           <li>
             <div class="time">10:00</div>
-            <div class="what"><b>Příjezd hostů</b> – welcome drink</div>
+            <div class="what"><b>Příjezd hostů</b> – uvítání</div>
           </li>
           <li>
             <div class="time">11:00</div>
@@ -259,7 +369,7 @@
           </li>
           <li>
             <div class="time">12:00</div>
-            <div class="what"><b>Gratulace + focení</b></div>
+            <div class="what"><b>Gratulace a společné foto</b></div>
           </li>
           <li>
             <div class="time">13:30</div>
@@ -267,12 +377,12 @@
           </li>
           <li>
             <div class="time">19:00</div>
-            <div class="what"><b>Párty</b></div>
+            <div class="what"><b>Večerní část</b></div>
           </li>
         </ul>
 
-        <div class="notice">
-          Později sem můžeme přidat i „děti / program“, „dietní okno“, „odjezdy taxi“, „večerní překvapení“ apod.
+        <div class="note small">
+          Pokud se budete chtít na cokoliv zeptat, najdete kontakty níže.
         </div>
       </section>
 
@@ -295,19 +405,17 @@
         </div>
 
         <p class="small" style="margin-top:12px">
-          Pokud budeme mít později přesné instrukce (kudy do areálu, kde zaparkovat), doplníme sem.
+          Upřesnění příjezdu, parkování a orientační body doplníme.
         </p>
       </section>
 
       <section class="card three" id="doprava">
-        <h2>Doprava &amp; parkování</h2>
-        <p>
-          (doplníme) – parkování, příjezd, taxi, nejbližší zastávka.
-        </p>
+        <h2>Doprava</h2>
+        <p>(doplníme) – příjezd, parkování, taxi.</p>
         <ul style="margin:0; padding-left:18px; color:var(--muted)">
           <li>Parkování: …</li>
           <li>Taxi: …</li>
-          <li>Orientační body: …</li>
+          <li>Orientační bod: …</li>
         </ul>
       </section>
 
@@ -315,73 +423,70 @@
         <h2>Ubytování</h2>
         <p>(doplníme) – tipy v okolí.</p>
         <ul style="margin:0; padding-left:18px; color:var(--muted)">
-          <li>Penzion / hotel v místě</li>
-          <li>Další možnost 1</li>
-          <li>Další možnost 2</li>
+          <li>V místě: …</li>
+          <li>V okolí: …</li>
         </ul>
       </section>
 
       <section class="card three">
         <h2>Dary</h2>
-        <p>
-          (doplníme) – krátká věta, co preferujeme.
-        </p>
-        <div class="notice small">
-          Pokud budeš chtít, přidám sem QR kód na účet nebo seznam přání.
+        <p>(doplníme) – krátká informace.</p>
+        <div class="note small">
+          Pokud budeme sdílet praktické údaje (např. QR), vložíme je sem.
         </div>
       </section>
 
       <section class="card" id="faq">
         <h2>FAQ</h2>
-        <p>Nejčastější otázky hostů na jednom místě.</p>
+        <p>Nejčastější otázky na jednom místě.</p>
 
         <details>
           <summary>Do kdy dát vědět účast?</summary>
           <div class="small" style="color:var(--muted); margin-top:8px;">
-            (doplníme) – datum RSVP + jak (SMS / formulář / e-mail).
+            (doplníme) – datum RSVP a způsob potvrzení.
           </div>
         </details>
 
         <details>
-          <summary>Co když mám dietní omezení?</summary>
+          <summary>Dietní omezení</summary>
           <div class="small" style="color:var(--muted); margin-top:8px;">
-            (doplníme) – napiš nám dopředu, ať s tím počítáme.
+            (doplníme) – napište nám prosím předem.
           </div>
         </details>
 
         <details>
-          <summary>Jsou vítané děti?</summary>
+          <summary>Děti</summary>
           <div class="small" style="color:var(--muted); margin-top:8px;">
             (doplníme)
           </div>
         </details>
 
         <details>
-          <summary>Jaký je dress code?</summary>
+          <summary>Dress code</summary>
           <div class="small" style="color:var(--muted); margin-top:8px;">
-            (doplníme) – ideálně pastelové / přírodní tóny, pohodlně.
+            Nechceme nic diktovat. Přijďte tak, abyste se cítili dobře.
           </div>
         </details>
       </section>
 
       <section class="card" id="kontakt">
         <h2>Kontakt</h2>
-        <p>V případě dotazů napiš nebo zavolej.</p>
+        <p>V případě dotazů se ozvěte.</p>
 
-        <div class="kvs">
-          <div class="kv"><b>Aneta:</b> +420 …</div>
-          <div class="kv"><b>Martin:</b> +420 …</div>
-          <div class="kv"><b>E-mail:</b> …</div>
+        <div class="meta">
+          <div class="chip"><b>Aneta:</b> +420 …</div>
+          <div class="chip"><b>Martin:</b> +420 …</div>
+          <div class="chip"><b>E-mail:</b> …</div>
         </div>
 
         <p class="small" style="margin-top:12px; color:var(--muted)">
-          Chceš-li, přidáme sem i RSVP formulář (Google Forms / Tally) jako tlačítko.
+          Pokud budete chtít RSVP přes formulář, přidáme sem tlačítko.
         </p>
       </section>
 
     </main>
 
-    <footer class="small">
+    <footer>
       Aktualizováno: <span id="updated"></span>
     </footer>
   </div>
@@ -392,7 +497,7 @@
     document.getElementById("updated").textContent =
       d.toLocaleDateString("cs-CZ", { year:"numeric", month:"long", day:"numeric" });
 
-    // Hladké posouvání v rámci stránky
+    // Hladké posouvání
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener("click", (e) => {
         const id = a.getAttribute("href");
@@ -404,8 +509,7 @@
       });
     });
 
-    // === ODPOČET DO OBŘADU ===
-    // 22. 08. 2026 11:00 (srpen = měsíc 7 v JS)
+    // Odpočet do obřadu: 22. 08. 2026 11:00 (měsíc 7 = srpen)
     const target = new Date(2026, 7, 22, 11, 0, 0);
 
     const $dys = document.getElementById("cdDays");
@@ -425,7 +529,7 @@
         $hrs.textContent = "00";
         $min.textContent = "00";
         $sec.textContent = "00";
-        $note.textContent = "Je to tady ❤️";
+        $note.textContent = "Obřad právě začíná.";
         return;
       }
 
@@ -440,7 +544,7 @@
       $min.textContent = pad2(mins);
       $sec.textContent = pad2(secs);
 
-      $note.textContent = "22. 8. 2026 • 11:00 • Penzion Mezi Vinohrady, Hovorany 696 12";
+      $note.textContent = "Penzion Mezi Vinohrady, Hovorany 696 12";
     }
 
     tick();
