@@ -1,770 +1,610 @@
-<!doctype html>
-<html lang="cs">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Aneta & Martin Šivelovi – svatba</title>
-  <meta name="description" content="Informace ke svatbě: odpočet, harmonogram, místo, doprava, ubytování, galerie, FAQ." />
-
-  <style>
-    :root{
-      --bg:#fbfaf8;
-      --paper: rgba(255,255,255,.90);
-      --text:#111827;
-      --muted:#6b7280;
-
-      --brand:#7fae9c;     /* šalvěj */
-      --brand2:#d2a5bc;    /* pudrová růžová */
-      --gold:#e7d6b0;      /* tlumená zlatá */
-
-      --line: rgba(17,24,39,.10);
-      --shadow: 0 18px 45px rgba(17,24,39,.07);
-      --shadow2: 0 22px 70px rgba(17,24,39,.10);
-      --radius: 18px;
-      --max: 980px;
-
-      --h1: clamp(34px, 4.2vw, 54px);
-      --h2: 20px;
-      --base: 16px;
-      --small: 13px;
-    }
-
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial;
-      font-size: var(--base);
-      line-height: 1.65;
-      color: var(--text);
-      background:
-        radial-gradient(1100px 720px at 12% 0%, rgba(127,174,156,.18), transparent 62%),
-        radial-gradient(1050px 680px at 92% 5%, rgba(210,165,188,.16), transparent 58%),
-        radial-gradient(900px 560px at 55% 100%, rgba(231,214,176,.10), transparent 62%),
-        var(--bg);
-      overflow-x:hidden;
-    }
-
-    a{color: var(--brand); text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    .wrap{max-width: var(--max); margin: 0 auto; padding: 28px 22px 78px}
-
-    /* Nav */
-    nav{
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(10px);
-      background: rgba(251,250,248,.72);
-      border-bottom: 1px solid var(--line);
-    }
-    .navin{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 10px 22px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .btn{
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.70);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-weight: 650;
-      font-size: 14px;
-      letter-spacing: .1px;
-      cursor: pointer;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease, background .14s ease;
-    }
-    .btn:hover{
-      border-color: rgba(17,24,39,.16);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(17,24,39,.06);
-      text-decoration:none;
-    }
-    .btn:active{transform: translateY(0)}
-
-    /* IMPORTANT: primary v navigaci už není permanentně "zvýrazněné" */
-    .btn.primary{
-      border-color: rgba(210,165,188,.55);
-      background: rgba(255,255,255,.70);
-    }
-
-    /* Active section in nav – pouze 1 současně */
-    .navlink.active{
-      border-color: rgba(127,174,156,.75);
-      background: rgba(127,174,156,.22);
-      box-shadow: 0 6px 18px rgba(127,174,156,.12);
-    }
-
-    /* Keyboard focus */
-    .btn:focus-visible{
-      outline: 3px solid rgba(210,165,188,.35);
-      outline-offset: 2px;
-    }
-
-    /* Header (Editorial) */
-    header{
-      position: relative;
-      margin-top: 8px;
-      padding: 34px 20px 22px;
-      border: 1px solid rgba(17,24,39,.08);
-      border-radius: 24px;
-      background: rgba(255,255,255,.78);
-      box-shadow: 0 18px 60px rgba(17,24,39,.06);
-      overflow: hidden;
-    }
-
-    /* Floral corners */
-    header::before, header::after{
-      content:"";
-      position:absolute;
-      width: 420px;
-      height: 220px;
-      opacity: .60;
-      pointer-events:none;
-      background-repeat:no-repeat;
-      background-size:contain;
-    }
-    header::before{
-      left: -10px;
-      top: -16px;
-      background-image: url('data:image/svg+xml;utf8,\
-<svg xmlns="http://www.w3.org/2000/svg" width="520" height="280" viewBox="0 0 520 280">\
-<g fill="none" stroke="rgba(17,24,39,0.20)" stroke-width="1.2" stroke-linecap="round">\
-<path d="M70 210c40-60 40-105 10-150" />\
-<path d="M92 212c36-56 30-96 4-138" />\
-<path d="M118 214c30-44 26-80 8-120" />\
-<path d="M140 216c24-34 22-62 10-96" />\
-</g>\
-<g fill="rgba(127,174,156,0.25)">\
-<circle cx="85" cy="135" r="4" /><circle cx="112" cy="120" r="3.5" /><circle cx="132" cy="154" r="3.5" />\
-</g>\
-<g fill="rgba(210,165,188,0.22)">\
-<circle cx="120" cy="176" r="4" /><circle cx="150" cy="160" r="3.5" /><circle cx="98" cy="162" r="3.5" />\
-</g>\
-<g fill="rgba(231,214,176,0.22)">\
-<circle cx="160" cy="192" r="3.5" /><circle cx="144" cy="130" r="3" />\
-</g>\
-</svg>');
-    }
-    header::after{
-      right: -12px;
-      bottom: -20px;
-      transform: rotate(180deg);
-      background-image: url('data:image/svg+xml;utf8,\
-<svg xmlns="http://www.w3.org/2000/svg" width="520" height="280" viewBox="0 0 520 280">\
-<g fill="none" stroke="rgba(17,24,39,0.20)" stroke-width="1.2" stroke-linecap="round">\
-<path d="M70 210c40-60 40-105 10-150" />\
-<path d="M92 212c36-56 30-96 4-138" />\
-<path d="M118 214c30-44 26-80 8-120" />\
-<path d="M140 216c24-34 22-62 10-96" />\
-</g>\
-<g fill="rgba(127,174,156,0.25)">\
-<circle cx="85" cy="135" r="4" /><circle cx="112" cy="120" r="3.5" /><circle cx="132" cy="154" r="3.5" />\
-</g>\
-<g fill="rgba(210,165,188,0.22)">\
-<circle cx="120" cy="176" r="4" /><circle cx="150" cy="160" r="3.5" /><circle cx="98" cy="162" r="3.5" />\
-</g>\
-<g fill="rgba(231,214,176,0.22)">\
-<circle cx="160" cy="192" r="3.5" /><circle cx="144" cy="130" r="3" />\
-</g>\
-</svg>');
-    }
-
-    .headin{
-      position: relative;
-      display:flex;
-      gap: 18px;
-      align-items:flex-start;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
-
-    .title h1{
-      margin: 0;
-      font-size: var(--h1);
-      letter-spacing: .25px;
-      font-weight: 820;
-    }
-    .title .lead{
-      margin: 12px 0 0;
-      color: var(--muted);
-      max-width: 72ch;
-      font-size: 16px;
-    }
-
-    .measure{max-width: 68ch}
-
-    .meta{
-      margin-top: 16px;
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-    }
-    .chip{
-      padding: 10px 12px;
-      border: 1px solid rgba(17,24,39,.10);
-      border-radius: 14px;
-      background: rgba(255,255,255,.68);
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .chip b{color: var(--text)}
-
-    .side{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .badge{
-      border: 1px solid rgba(231,214,176,.55);
-      background: rgba(231,214,176,.18);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 650;
-      white-space:nowrap;
-    }
-
-    /* Layout */
-    main{padding-top: 18px}
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-    }
-
-    /* Cards */
-    .card{
-      grid-column: span 12;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
-    }
-    @media (hover:hover){
-      .card:hover{
-        transform: translateY(-2px);
-        box-shadow: var(--shadow2);
-        border-color: rgba(17,24,39,.14);
-        background: rgba(255,255,255,.92);
-      }
-    }
-
-    .card h2{
-      margin: 0 0 10px;
-      font-size: var(--h2);
-      letter-spacing: .15px;
-      font-weight: 740;
-    }
-    .card p{margin:0 0 10px; color: var(--muted)}
-    .card p, .card .small, .card ul{max-width: 72ch}
-
-    .two{grid-column: span 12}
-    @media (min-width: 860px){
-      .two{grid-column: span 6}
-      .three{grid-column: span 4}
-    }
-
-    /* Countdown */
-    .countdown{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: stretch;
-      margin-top: 8px;
-    }
-    .cd{
-      min-width: 128px;
-      padding: 14px 14px 12px;
-      border: 1px solid rgba(17,24,39,.12);
-      border-radius: 16px;
-      background: rgba(255,255,255,.76);
-    }
-    .num{
-      font-size: 34px;
-      font-weight: 860;
-      letter-spacing: .6px;
-      font-variant-numeric: tabular-nums;
-    }
-    .lab{
-      margin-top: 2px;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: var(--small);
-      letter-spacing: .22px;
-      text-transform: uppercase;
-    }
-    .subline{
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: var(--small);
-    }
-
-    /* Timeline */
-    .timeline{margin: 12px 0 0; padding: 0; list-style: none}
-    .timeline li{
-      display:flex;
-      gap: 14px;
-      padding: 12px 0;
-      border-top: 1px solid var(--line);
-    }
-    .time{
-      min-width: 90px;
-      font-weight: 820;
-      color: var(--text);
-      font-variant-numeric: tabular-nums;
-      letter-spacing: .2px;
-    }
-    .what{color: var(--muted)}
-    .what b{color: var(--text)}
-
-    /* Gallery placeholders */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-      margin-top: 12px;
-    }
-    .ph{
-      grid-column: span 12;
-      border: 1px dashed rgba(17,24,39,.18);
-      border-radius: 16px;
-      background: rgba(255,255,255,.70);
-      aspect-ratio: 4 / 3;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color: rgba(17,24,39,.55);
-      font-size: 14px;
-      letter-spacing: .12px;
-      user-select:none;
-    }
-    @media (min-width: 720px){
-      .ph{grid-column: span 4}
-    }
-
-    /* FAQ */
-    details{
-      border-top: 1px solid var(--line);
-      padding: 12px 0;
-    }
-    summary{
-      cursor: pointer;
-      font-weight: 720;
-      letter-spacing: .1px;
-    }
-
-    /* Utility */
-    .row{display:flex; gap: 12px; flex-wrap: wrap}
-    .small{font-size: var(--small)}
-    .note{
-      border: 1px solid rgba(127,174,156,.35);
-      background: rgba(127,174,156,.10);
-      padding: 12px 14px;
-      border-radius: 14px;
-      color: var(--muted);
-    }
-
-    footer{
-      margin-top: 18px;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
-      padding-top: 16px;
-      font-size: var(--small);
-    }
-
-    /* Back to top */
-    .totop{
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 50;
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      transition: opacity .18s ease, transform .18s ease;
-    }
-    .totop.show{
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-  </style>
-</head>
-
-<body>
-  <nav>
-    <div class="navin">
-      <a class="btn navlink" href="#top">Úvod</a>
-      <a class="btn navlink" href="#odpocet">Odpočet</a>
-      <a class="btn navlink" href="#harmonogram">Harmonogram</a>
-      <a class="btn navlink" href="#misto">Místo</a>
-      <a class="btn navlink" href="#doprava">Doprava</a>
-      <a class="btn navlink" href="#ubytovani">Ubytování</a>
-      <a class="btn navlink" href="#galerie">Galerie</a>
-      <a class="btn navlink" href="#faq">FAQ</a>
-      <a class="btn navlink primary" href="#kontakt">Kontakt</a>
-    </div>
-  </nav>
-
-  <div class="wrap" id="top">
-
-    <header>
-      <div class="headin">
-        <div class="title">
-          <h1>Aneta &amp; Martin Šivelovi</h1>
-          <p class="lead measure">
-            Informace k našemu svatebnímu dni na jednom místě. Stránku budeme průběžně doplňovat.
-          </p>
-
-          <div class="meta">
-            <div class="chip"><b>Datum:</b> 22. 08. 2026</div>
-            <div class="chip"><b>Obřad:</b> 11:00</div>
-            <div class="chip"><b>Místo:</b> Penzion Mezi Vinohrady, Hovorany 696 12</div>
-            <div class="chip"><b>Dress code:</b> podle vašeho pohodlí</div>
-          </div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Agency - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Welcome To Our Studio!</div>
+                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+            </div>
+        </header>
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Services</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">E-Commerce</h4>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Responsive Design</h4>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Web Security</h4>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Grid-->
+        <section class="page-section bg-light" id="portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Portfolio</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 1-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Threads</div>
+                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 2-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Explore</div>
+                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 3-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Finish</div>
+                                <div class="portfolio-caption-subheading text-muted">Identity</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                        <!-- Portfolio item 4-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Lines</div>
+                                <div class="portfolio-caption-subheading text-muted">Branding</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                        <!-- Portfolio item 5-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Southwest</div>
+                                <div class="portfolio-caption-subheading text-muted">Website Design</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <!-- Portfolio item 6-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Window</div>
+                                <div class="portfolio-caption-subheading text-muted">Photography</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About-->
+        <section class="page-section" id="about">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">About</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>2009-2011</h4>
+                                <h4 class="subheading">Our Humble Beginnings</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>March 2011</h4>
+                                <h4 class="subheading">An Agency is Born</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>December 2015</h4>
+                                <h4 class="subheading">Transition to Full Service</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>July 2020</h4>
+                                <h4 class="subheading">Phase Two Expansion</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <h4>
+                                Be Part
+                                <br />
+                                Of Our
+                                <br />
+                                Story!
+                            </h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Team-->
+        <section class="page-section bg-light" id="team">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
+                            <h4>Parveen Anand</h4>
+                            <p class="text-muted">Lead Designer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
+                            <h4>Diana Petersen</h4>
+                            <p class="text-muted">Lead Marketer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
+                            <h4>Larry Parker</h4>
+                            <p class="text-muted">Lead Developer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+                </div>
+            </div>
+        </section>
+        <!-- Clients-->
+        <div class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg" alt="..." aria-label="Microsoft Logo" /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg" alt="..." aria-label="Google Logo" /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="side">
-          <a class="btn primary" target="_blank" rel="noopener" href="https://forms.gle/PASTE-YOUR-FORM-LINK">
-            RSVP formulář
-          </a>
-          <div class="badge">Penzion Mezi Vinohrady</div>
-          <a class="btn" href="#misto">Mapa</a>
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Contact Us</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- * * SB Forms Contact Form * *-->
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- This form is pre-integrated with SB Forms.-->
+                <!-- To make this form functional, sign up at-->
+                <!-- https://startbootstrap.com/solution/contact-forms-->
+                <!-- to get an API token!-->
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                    <div class="row align-items-stretch mb-5">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!-- Name input-->
+                                <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Email address input-->
+                                <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            <div class="form-group mb-md-0">
+                                <!-- Phone number input-->
+                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-textarea mb-md-0">
+                                <!-- Message input-->
+                                <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center text-white mb-3">
+                            <div class="fw-bolder">Form submission successful!</div>
+                            To activate this form, sign up at
+                            <br />
+                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    <!-- Submit Button-->
+                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+                </form>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Portfolio Modals-->
+        <!-- Portfolio item 1 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Threads
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Illustration
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </header>
-
-    <main class="grid">
-
-      <section class="card" id="odpocet">
-        <h2>Odpočet do obřadu</h2>
-        <p class="measure">22. 08. 2026 v 11:00</p>
-
-        <div class="countdown" aria-live="polite">
-          <div class="cd">
-            <div class="num" id="cdDays">–</div>
-            <div class="lab">Dní</div>
-          </div>
-          <div class="cd">
-            <div class="num" id="cdHours">–</div>
-            <div class="lab">Hodin</div>
-          </div>
-          <div class="cd">
-            <div class="num" id="cdMins">–</div>
-            <div class="lab">Minut</div>
-          </div>
-          <div class="cd">
-            <div class="num" id="cdSecs">–</div>
-            <div class="lab">Sekund</div>
-          </div>
+        <!-- Portfolio item 2 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Explore
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Graphic Design
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="subline" id="cdNote"></div>
-      </section>
-
-      <section class="card two" id="harmonogram">
-        <h2>Harmonogram dne</h2>
-        <p class="measure">Časy jsou orientační. Jakmile budou finální, doplníme je zde.</p>
-
-        <ul class="timeline">
-          <li>
-            <div class="time">10:00</div>
-            <div class="what"><b>Příjezd hostů</b> – uvítání</div>
-          </li>
-          <li>
-            <div class="time">11:00</div>
-            <div class="what"><b>Obřad</b></div>
-          </li>
-          <li>
-            <div class="time">12:00</div>
-            <div class="what"><b>Gratulace a společné foto</b></div>
-          </li>
-          <li>
-            <div class="time">13:30</div>
-            <div class="what"><b>Hostina</b></div>
-          </li>
-          <li>
-            <div class="time">19:00</div>
-            <div class="what"><b>Večerní část</b></div>
-          </li>
-        </ul>
-
-        <div class="note small measure">
-          Pokud se budete chtít na cokoliv zeptat, najdete kontakty níže.
+        <!-- Portfolio item 3 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Finish
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Identity
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
-
-      <section class="card two" id="misto">
-        <h2>Místo konání</h2>
-        <p class="measure">
-          <b>Penzion Mezi Vinohrady</b><br />
-          Hovorany 696 12
-        </p>
-
-        <div class="row">
-          <a class="btn primary" target="_blank" rel="noopener"
-             href="https://www.google.com/maps/search/?api=1&query=Penzion+Mezi+Vinohrady%2C+696+12+Hovorany">
-            Otevřít v Google Maps
-          </a>
-          <a class="btn" target="_blank" rel="noopener"
-             href="https://www.google.com/maps/dir/?api=1&destination=Penzion+Mezi+Vinohrady%2C+696+12+Hovorany">
-            Navigovat sem
-          </a>
+        <!-- Portfolio item 4 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Lines
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Branding
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <p class="small measure" style="margin-top:12px">
-          Upřesnění příjezdu, parkování a orientační body doplníme.
-        </p>
-      </section>
-
-      <section class="card three" id="doprava">
-        <h2>Doprava</h2>
-        <p class="measure">(doplníme) – příjezd, parkování, taxi.</p>
-        <ul style="margin:0; padding-left:18px; color:var(--muted)">
-          <li>Parkování: …</li>
-          <li>Taxi: …</li>
-          <li>Orientační bod: …</li>
-        </ul>
-      </section>
-
-      <section class="card three" id="ubytovani">
-        <h2>Ubytování</h2>
-        <p class="measure">(doplníme) – tipy v okolí.</p>
-        <ul style="margin:0; padding-left:18px; color:var(--muted)">
-          <li>V místě: …</li>
-          <li>V okolí: …</li>
-        </ul>
-      </section>
-
-      <section class="card three">
-        <h2>Dary</h2>
-        <p class="measure">(doplníme) – krátká informace.</p>
-        <div class="note small measure">
-          Pokud budeme sdílet praktické údaje (např. QR), vložíme je sem.
+        <!-- Portfolio item 5 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Southwest
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Website Design
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
-
-      <section class="card" id="galerie">
-        <h2>Galerie</h2>
-        <p class="measure">(zatím připraveno) – sem později vložíme fotky.</p>
-
-        <div class="gallery" aria-label="Galerie – zástupné pozice">
-          <div class="ph">Foto 1</div>
-          <div class="ph">Foto 2</div>
-          <div class="ph">Foto 3</div>
-          <div class="ph">Foto 4</div>
-          <div class="ph">Foto 5</div>
-          <div class="ph">Foto 6</div>
+        <!-- Portfolio item 6 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Window
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Photography
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="note small measure" style="margin-top:12px">
-          Až budeš chtít, uděláme sem „upload link“ (např. Google Photos album) nebo mřížku fotek z repozitáře.
-        </div>
-      </section>
-
-      <section class="card" id="faq">
-        <h2>FAQ</h2>
-        <p class="measure">Nejčastější otázky na jednom místě.</p>
-
-        <details>
-          <summary>Do kdy dát vědět účast?</summary>
-          <div class="small measure" style="color:var(--muted); margin-top:8px;">
-            Potvrzení účasti doplníme. Do té doby stačí napsat.
-          </div>
-        </details>
-
-        <details>
-          <summary>Dietní omezení</summary>
-          <div class="small measure" style="color:var(--muted); margin-top:8px;">
-            (doplníme) – napište nám prosím předem.
-          </div>
-        </details>
-
-        <details>
-          <summary>Děti</summary>
-          <div class="small measure" style="color:var(--muted); margin-top:8px;">
-            (doplníme)
-          </div>
-        </details>
-
-        <details>
-          <summary>Dress code</summary>
-          <div class="small measure" style="color:var(--muted); margin-top:8px;">
-            Nechceme nic diktovat. Přijďte tak, abyste se cítili dobře.
-          </div>
-        </details>
-      </section>
-
-      <section class="card" id="kontakt">
-        <h2>Kontakt</h2>
-        <p class="measure">V případě dotazů se ozvěte.</p>
-
-        <div class="meta">
-          <div class="chip"><b>Aneta:</b> +420 …</div>
-          <div class="chip"><b>Martin:</b> +420 …</div>
-          <div class="chip"><b>E-mail:</b> …</div>
-        </div>
-
-        <p class="small measure" style="margin-top:12px; color:var(--muted)">
-          RSVP odkaz je také v horní části stránky.
-        </p>
-      </section>
-
-    </main>
-
-    <footer>
-      Aktualizováno: <span id="updated"></span>
-    </footer>
-  </div>
-
-  <div class="totop" id="toTop">
-    <a class="btn" href="#top">Nahoru</a>
-  </div>
-
-  <script>
-    // Aktualizováno
-    const d = new Date();
-    document.getElementById("updated").textContent =
-      d.toLocaleDateString("cs-CZ", { year:"numeric", month:"long", day:"numeric" });
-
-    // Nav odkazy
-    const navLinks = Array.from(document.querySelectorAll(".navlink"));
-    const navEl = document.querySelector("nav");
-
-    function setActive(hash){
-      // vždy jen jeden aktivní
-      navLinks.forEach(a => a.classList.remove("active"));
-      const found = navLinks.find(a => a.getAttribute("href") === hash);
-      if(found) found.classList.add("active");
-    }
-
-    // Hladké posouvání + okamžité zvýraznění
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", (e) => {
-        const id = a.getAttribute("href");
-        const el = document.querySelector(id);
-        if(!el) return;
-
-        e.preventDefault();
-        setActive(id); // okamžitě
-
-        el.scrollIntoView({behavior:"smooth", block:"start"});
-        history.pushState(null, "", id);
-      });
-    });
-
-    // Odpočet do obřadu: 22. 08. 2026 11:00 (měsíc 7 = srpen)
-    const target = new Date(2026, 7, 22, 11, 0, 0);
-
-    const $dys = document.getElementById("cdDays");
-    const $hrs = document.getElementById("cdHours");
-    const $min = document.getElementById("cdMins");
-    const $sec = document.getElementById("cdSecs");
-    const $note = document.getElementById("cdNote");
-
-    function pad2(n){ return String(n).padStart(2, "0"); }
-
-    function tick(){
-      const now = new Date();
-      let diff = target.getTime() - now.getTime();
-
-      if(diff <= 0){
-        $dys.textContent = "0";
-        $hrs.textContent = "00";
-        $min.textContent = "00";
-        $sec.textContent = "00";
-        $note.textContent = "Obřad právě začíná.";
-        return;
-      }
-
-      const totalSec = Math.floor(diff / 1000);
-      const days = Math.floor(totalSec / 86400);
-      const hours = Math.floor((totalSec % 86400) / 3600);
-      const mins = Math.floor((totalSec % 3600) / 60);
-      const secs = totalSec % 60;
-
-      $dys.textContent = String(days);
-      $hrs.textContent = pad2(hours);
-      $min.textContent = pad2(mins);
-      $sec.textContent = pad2(secs);
-
-      $note.textContent = "Penzion Mezi Vinohrady, Hovorany 696 12";
-    }
-
-    tick();
-    setInterval(tick, 250);
-
-    // Sekce pro scroll-spy (spolehlivější než IntersectionObserver = žádné opoždění)
-    const sections = [
-      document.getElementById("top"),
-      document.getElementById("odpocet"),
-      document.getElementById("harmonogram"),
-      document.getElementById("misto"),
-      document.getElementById("doprava"),
-      document.getElementById("ubytovani"),
-      document.getElementById("galerie"),
-      document.getElementById("faq"),
-      document.getElementById("kontakt")
-    ].filter(Boolean);
-
-    let raf = 0;
-    function updateSpy(){
-      raf = 0;
-
-      const navH = navEl ? navEl.offsetHeight : 0;
-      const y = navH + 16; // offset pod navigací
-
-      // vyber poslední sekci, která už "přejela" pod nav
-      let current = sections[0];
-      for(const s of sections){
-        const r = s.getBoundingClientRect();
-        if(r.top <= y) current = s;
-      }
-      setActive("#" + current.id);
-    }
-
-    function onScroll(){
-      if(raf) return;
-      raf = requestAnimationFrame(updateSpy);
-    }
-
-    // init
-    if (location.hash) setActive(location.hash);
-    else setActive("#top");
-    updateSpy();
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    // Back to top visibility
-    const toTop = document.getElementById("toTop");
-    function onTopButton(){
-      const show = window.scrollY > 500;
-      toTop.classList.toggle("show", show);
-    }
-    onTopButton();
-    window.addEventListener("scroll", onTopButton, { passive: true });
-
-    // když se změní hash (např. tlačítko zpět v prohlížeči)
-    window.addEventListener("popstate", () => {
-      if(location.hash) setActive(location.hash);
-      updateSpy();
-    });
-  </script>
-</body>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
 </html>
