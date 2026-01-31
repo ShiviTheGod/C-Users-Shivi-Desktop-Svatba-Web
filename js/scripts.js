@@ -51,4 +51,52 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+
+    // Updated date in footer
+    const updatedEl = document.getElementById('updated');
+    if (updatedEl) {
+        const now = new Date();
+        updatedEl.textContent = 'Aktualizováno: ' + now.toLocaleDateString('cs-CZ', { year:'numeric', month:'long', day:'numeric' });
+    }
+
+    // Countdown to ceremony: 22. 08. 2026 11:00 (month is 0-based => 7 = August)
+    const target = new Date(2026, 7, 22, 11, 0, 0);
+    const $dys = document.getElementById('cdDays');
+    const $hrs = document.getElementById('cdHours');
+    const $min = document.getElementById('cdMins');
+    const $sec = document.getElementById('cdSecs');
+    const $note = document.getElementById('cdNote');
+
+    function pad2(n){ return String(n).padStart(2, '0'); }
+
+    function tick(){
+        if(!$dys || !$hrs || !$min || !$sec) return;
+
+        const now = new Date();
+        let diff = target.getTime() - now.getTime();
+
+        if(diff <= 0){
+            $dys.textContent = '0';
+            $hrs.textContent = '00';
+            $min.textContent = '00';
+            $sec.textContent = '00';
+            if($note) $note.textContent = 'Obřad právě začíná.';
+            return;
+        }
+
+        const totalSec = Math.floor(diff / 1000);
+        const days = Math.floor(totalSec / 86400);
+        const hours = Math.floor((totalSec % 86400) / 3600);
+        const mins = Math.floor((totalSec % 3600) / 60);
+        const secs = totalSec % 60;
+
+        $dys.textContent = String(days);
+        $hrs.textContent = pad2(hours);
+        $min.textContent = pad2(mins);
+        $sec.textContent = pad2(secs);
+    }
+
+    tick();
+    setInterval(tick, 250);
+
 });
