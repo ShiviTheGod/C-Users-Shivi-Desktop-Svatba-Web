@@ -3,115 +3,179 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Svatba – informace</title>
+  <title>Aneta & Martin Šivelovi – svatba</title>
   <meta name="description" content="Informace ke svatbě: harmonogram, místo, doprava, ubytování, FAQ." />
 
   <style>
     :root{
-      --bg:#0b0f14;
-      --card:#101826;
-      --text:#eaf0ff;
-      --muted:#a7b3cc;
-      --brand:#7dd3fc;
-      --brand2:#a78bfa;
-      --line:rgba(255,255,255,.08);
-      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --bg:#fbfaf8;
+      --card:#ffffffcc;
+      --text:#1f2937;
+      --muted:#6b7280;
+
+      --brand:#8ab4a6;   /* šalvěj */
+      --brand2:#d7a9c3;  /* pudrová růžová */
+
+      --line:rgba(31,41,55,.10);
+      --shadow: 0 10px 26px rgba(17,24,39,.08);
       --radius: 18px;
       --max: 980px;
     }
+
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
     body{
       color:var(--text);
-      background: radial-gradient(1200px 800px at 10% 0%, rgba(125,211,252,.18), transparent 60%),
-                  radial-gradient(1000px 700px at 95% 10%, rgba(167,139,250,.16), transparent 55%),
-                  var(--bg);
-      line-height:1.55;
+      background:
+        radial-gradient(900px 600px at 10% 0%, rgba(138,180,166,.20), transparent 60%),
+        radial-gradient(900px 600px at 95% 5%, rgba(215,169,195,.18), transparent 55%),
+        radial-gradient(800px 520px at 50% 100%, rgba(255,215,102,.10), transparent 60%),
+        var(--bg);
+      line-height:1.6;
     }
+
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
+
     .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+
     header{
       padding:28px 0 10px;
       display:flex; gap:18px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
     }
+
     .title h1{margin:0;font-size:clamp(28px, 4vw, 44px); letter-spacing:.2px}
-    .title p{margin:8px 0 0; color:var(--muted); max-width:64ch}
+    .title p{margin:10px 0 0; color:var(--muted); max-width:68ch}
+
     .pill{
       display:inline-flex; align-items:center; gap:10px;
       padding:10px 14px; border:1px solid var(--line); border-radius:999px;
-      background: rgba(255,255,255,.03);
-      box-shadow: 0 1px 0 rgba(255,255,255,.05) inset;
+      background: rgba(255,255,255,.55);
+      box-shadow: 0 1px 0 rgba(255,255,255,.7) inset;
       white-space:nowrap;
     }
+
     nav{
       position:sticky; top:0; z-index:10;
       backdrop-filter: blur(10px);
-      background: rgba(11,15,20,.65);
+      background: rgba(251,250,248,.75);
       border-bottom:1px solid var(--line);
     }
     .navin{
       max-width:var(--max); margin:0 auto; padding:10px 24px;
       display:flex; gap:10px; flex-wrap:wrap;
     }
+
     .btn{
-      border:1px solid var(--line); background: rgba(255,255,255,.03); color:var(--text);
-      padding:10px 12px; border-radius:999px; cursor:pointer;
-      font-weight:600; font-size:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.6);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:650;
+      font-size:14px;
     }
-    .btn:hover{border-color:rgba(255,255,255,.16)}
-    .btn.primary{border-color:rgba(125,211,252,.35); background: rgba(125,211,252,.12)}
+    .btn:hover{border-color:rgba(31,41,55,.18)}
+    .btn.primary{
+      border-color:rgba(138,180,166,.45);
+      background: rgba(138,180,166,.20);
+    }
+
     main{padding:18px 0 64px}
+
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap:16px;
     }
+
     .card{
       grid-column: span 12;
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      background: var(--card);
       border:1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding:18px;
     }
+
     .card h2{margin:0 0 10px; font-size:22px}
     .card p{margin:0 0 10px; color:var(--muted)}
+
     .two{grid-column: span 12}
     @media (min-width: 860px){
       .two{grid-column: span 6}
       .three{grid-column: span 4}
     }
-    .kvs{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
-    .kv{padding:10px 12px; border:1px dashed rgba(255,255,255,.14); border-radius:14px; color:var(--muted)}
+
+    .kvs{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .kv{
+      padding:10px 12px;
+      border:1px dashed rgba(31,41,55,.18);
+      border-radius:14px;
+      color:var(--muted);
+      background: rgba(255,255,255,.55);
+    }
     .kv b{color:var(--text)}
+
     .timeline{margin:12px 0 0; padding:0; list-style:none}
     .timeline li{
       display:flex; gap:12px; padding:12px 0;
       border-top:1px solid var(--line);
     }
     .time{
-      min-width:72px; font-weight:800; color:var(--text);
+      min-width:78px;
+      font-weight:800;
+      color:var(--text);
       font-variant-numeric: tabular-nums;
     }
     .what{color:var(--muted)}
+
     .row{display:flex; gap:12px; flex-wrap:wrap}
     .row .btn{flex:0 0 auto}
+
     .notice{
-      border:1px solid rgba(167,139,250,.25);
-      background: rgba(167,139,250,.08);
+      border:1px solid rgba(215,169,195,.35);
+      background: rgba(215,169,195,.12);
       padding:12px 14px;
       border-radius: 14px;
       color: var(--muted);
     }
+
     details{
       border-top: 1px solid var(--line);
       padding: 12px 0;
     }
     summary{cursor:pointer; font-weight:700}
+
     footer{color:var(--muted); border-top:1px solid var(--line); padding:18px 0}
     .small{font-size:13px}
-    .hide{display:none}
+
+    /* Odpočet */
+    .countdown{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:stretch;
+      margin-top:10px;
+    }
+    .cd{
+      min-width:120px;
+      padding:14px 14px 12px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background: rgba(255,255,255,.70);
+    }
+    .num{
+      font-size:34px;
+      font-weight:800;
+      letter-spacing:.5px;
+      font-variant-numeric: tabular-nums;
+    }
+    .lab{
+      margin-top:2px;
+      color:var(--muted);
+      font-weight:650;
+      font-size:13px;
+      letter-spacing:.2px;
+    }
   </style>
 </head>
 
@@ -119,6 +183,7 @@
   <nav>
     <div class="navin">
       <a class="btn" href="#top">Úvod</a>
+      <a class="btn" href="#odpocet">Odpočet</a>
       <a class="btn" href="#harmonogram">Harmonogram</a>
       <a class="btn" href="#misto">Místo</a>
       <a class="btn" href="#doprava">Doprava</a>
@@ -131,17 +196,17 @@
   <div class="wrap" id="top">
     <header>
       <div class="title">
-        <h1>Aneta &amp; Martin 💍</h1>
+        <h1>Aneta &amp; Martin Šivelovi</h1>
         <p>
           Všechny důležité informace k naší svatbě na jednom místě.
           Ulož si stránku do záložek – budeme ji průběžně aktualizovat.
         </p>
 
         <div class="kvs">
-          <div class="kv"><b>Datum:</b> 00.00.2026</div>
-          <div class="kv"><b>Čas:</b> obřad 00:00</div>
-          <div class="kv"><b>Místo:</b> Název lokace</div>
-          <div class="kv"><b>Dress code:</b> smart casual</div>
+          <div class="kv"><b>Datum:</b> 22. 08. 2026</div>
+          <div class="kv"><b>Čas:</b> obřad 11:00</div>
+          <div class="kv"><b>Místo:</b> Penzion Mezi Vinohrady, Hovorany 696 12</div>
+          <div class="kv"><b>Dress code:</b> (doplníme)</div>
         </div>
       </div>
 
@@ -153,95 +218,116 @@
 
     <main class="grid">
 
+      <section class="card" id="odpocet">
+        <h2>Odpočet do obřadu</h2>
+        <p>Počítáme to na sekundy 🙂</p>
+
+        <div class="countdown" aria-live="polite">
+          <div class="cd">
+            <div class="num" id="cdDays">–</div>
+            <div class="lab">dní</div>
+          </div>
+          <div class="cd">
+            <div class="num" id="cdHours">–</div>
+            <div class="lab">hodin</div>
+          </div>
+          <div class="cd">
+            <div class="num" id="cdMins">–</div>
+            <div class="lab">minut</div>
+          </div>
+          <div class="cd">
+            <div class="num" id="cdSecs">–</div>
+            <div class="lab">sekund</div>
+          </div>
+        </div>
+
+        <p class="small" id="cdNote" style="margin:12px 0 0; color:var(--muted)"></p>
+      </section>
+
       <section class="card two" id="harmonogram">
         <h2>Harmonogram dne</h2>
-        <p>Časy jsou orientační. Když se něco změní, přepíšeme to tady.</p>
+        <p>Časy jsou orientační. Jakmile budou finální, doplníme.</p>
 
         <ul class="timeline">
           <li>
-            <div class="time">13:30</div>
+            <div class="time">10:00</div>
             <div class="what"><b>Příjezd hostů</b> – welcome drink</div>
           </li>
           <li>
-            <div class="time">15:00</div>
+            <div class="time">11:00</div>
             <div class="what"><b>Obřad</b></div>
           </li>
           <li>
-            <div class="time">16:00</div>
+            <div class="time">12:00</div>
             <div class="what"><b>Gratulace + focení</b></div>
           </li>
           <li>
-            <div class="time">17:30</div>
+            <div class="time">13:30</div>
             <div class="what"><b>Hostina</b></div>
           </li>
           <li>
-            <div class="time">20:00</div>
-            <div class="what"><b>První tanec</b> + párty</div>
-          </li>
-          <li>
-            <div class="time">23:30</div>
-            <div class="what"><b>Půlnoční překvapení</b></div>
+            <div class="time">19:00</div>
+            <div class="what"><b>Párty</b></div>
           </li>
         </ul>
 
         <div class="notice">
-          Tip: Pokud chceš přidat „program pro děti“, „vegetariánské okno“, „odjezdy taxi“, dej to jako další řádky do harmonogramu.
+          Později sem můžeme přidat i „děti / program“, „dietní okno“, „odjezdy taxi“, „večerní překvapení“ apod.
         </div>
       </section>
 
       <section class="card two" id="misto">
         <h2>Místo konání</h2>
         <p>
-          <b>Název lokace</b><br />
-          Ulice 123, 110 00 Město
+          <b>Penzion Mezi Vinohrady</b><br />
+          Hovorany 696 12
         </p>
 
         <div class="row">
           <a class="btn primary" target="_blank" rel="noopener"
-             href="https://www.google.com/maps?q=Prague">
+             href="https://www.google.com/maps/search/?api=1&query=Penzion+Mezi+Vinohrady%2C+696+12+Hovorany">
             Otevřít v Google Maps
           </a>
           <a class="btn" target="_blank" rel="noopener"
-             href="https://www.google.com/maps/dir/?api=1&destination=Prague">
+             href="https://www.google.com/maps/dir/?api=1&destination=Penzion+Mezi+Vinohrady%2C+696+12+Hovorany">
             Navigovat sem
           </a>
         </div>
 
         <p class="small" style="margin-top:12px">
-          Jakmile budeš znát přesnou adresu, jen přepiš „Prague“ v odkazech na svůj cíl
-          (nebo tam vlož GPS souřadnice).
+          Pokud budeme mít později přesné instrukce (kudy do areálu, kde zaparkovat), doplníme sem.
         </p>
       </section>
 
       <section class="card three" id="doprava">
         <h2>Doprava &amp; parkování</h2>
         <p>
-          Napiš sem stručně: kde se dá parkovat, jestli je závora, a jestli doporučujete taxi.
+          (doplníme) – parkování, příjezd, taxi, nejbližší zastávka.
         </p>
         <ul style="margin:0; padding-left:18px; color:var(--muted)">
           <li>Parkování: …</li>
-          <li>Nejbližší zastávka: …</li>
           <li>Taxi: …</li>
+          <li>Orientační body: …</li>
         </ul>
       </section>
 
       <section class="card three" id="ubytovani">
         <h2>Ubytování</h2>
-        <p>Doporučené možnosti v okolí.</p>
+        <p>(doplníme) – tipy v okolí.</p>
         <ul style="margin:0; padding-left:18px; color:var(--muted)">
-          <li>Hotel A – cca 5 min autem</li>
-          <li>Penzion B – cca 10 min pěšky</li>
-          <li>Další tipy doplníme</li>
+          <li>Penzion / hotel v místě</li>
+          <li>Další možnost 1</li>
+          <li>Další možnost 2</li>
         </ul>
       </section>
 
       <section class="card three">
         <h2>Dary</h2>
         <p>
-          Krátká věta, co preferujete. (Např. „Nejvíc nás potěší příspěvek na …“ nebo „budeme rádi za …“)
+          (doplníme) – krátká věta, co preferujeme.
         </p>
         <div class="notice small">
-          Pokud chceš, můžeme sem přidat QR kód na účet / seznam přání – čistě jako volitelnou sekci.
+          Pokud budeš chtít, přidám sem QR kód na účet nebo seznam přání.
         </div>
       </section>
 
@@ -252,44 +338,44 @@
         <details>
           <summary>Do kdy dát vědět účast?</summary>
           <div class="small" style="color:var(--muted); margin-top:8px;">
-            Napiš datum RSVP a způsob (SMS / formulář / e-mail).
+            (doplníme) – datum RSVP + jak (SMS / formulář / e-mail).
           </div>
         </details>
 
         <details>
           <summary>Co když mám dietní omezení?</summary>
           <div class="small" style="color:var(--muted); margin-top:8px;">
-            Napiš, kam mají hosté poslat informace (např. „napiš Martinovi“).
+            (doplníme) – napiš nám dopředu, ať s tím počítáme.
           </div>
         </details>
 
         <details>
           <summary>Jsou vítané děti?</summary>
           <div class="small" style="color:var(--muted); margin-top:8px;">
-            Doplň pravidla podle vás.
+            (doplníme)
           </div>
         </details>
 
         <details>
           <summary>Jaký je dress code?</summary>
           <div class="small" style="color:var(--muted); margin-top:8px;">
-            Doplň konkrétní styl, barvy, doporučení k obuvi atd.
+            (doplníme) – ideálně pastelové / přírodní tóny, pohodlně.
           </div>
         </details>
       </section>
 
       <section class="card" id="kontakt">
         <h2>Kontakt</h2>
-        <p>Když si nebudeš jistý/á, napiš nebo zavolej.</p>
+        <p>V případě dotazů napiš nebo zavolej.</p>
 
         <div class="kvs">
-          <div class="kv"><b>Martin:</b> +420 000 000 000</div>
-          <div class="kv"><b>Svědek/svědkyně:</b> +420 000 000 000</div>
-          <div class="kv"><b>E-mail:</b> svatba@example.com</div>
+          <div class="kv"><b>Aneta:</b> +420 …</div>
+          <div class="kv"><b>Martin:</b> +420 …</div>
+          <div class="kv"><b>E-mail:</b> …</div>
         </div>
 
         <p class="small" style="margin-top:12px; color:var(--muted)">
-          Chceš-li, přidám sem i formulář pro RSVP (bez backendu) přes Google Forms / Tally.
+          Chceš-li, přidáme sem i RSVP formulář (Google Forms / Tally) jako tlačítko.
         </p>
       </section>
 
@@ -301,12 +387,12 @@
   </div>
 
   <script>
-    // automatické datum "Aktualizováno"
+    // Aktualizováno
     const d = new Date();
     document.getElementById("updated").textContent =
       d.toLocaleDateString("cs-CZ", { year:"numeric", month:"long", day:"numeric" });
 
-    // hladké posouvání v rámci stránky (funguje i bez toho, ale je to příjemnější)
+    // Hladké posouvání v rámci stránky
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener("click", (e) => {
         const id = a.getAttribute("href");
@@ -317,6 +403,48 @@
         history.pushState(null, "", id);
       });
     });
+
+    // === ODPOČET DO OBŘADU ===
+    // 22. 08. 2026 11:00 (srpen = měsíc 7 v JS)
+    const target = new Date(2026, 7, 22, 11, 0, 0);
+
+    const $dys = document.getElementById("cdDays");
+    const $hrs = document.getElementById("cdHours");
+    const $min = document.getElementById("cdMins");
+    const $sec = document.getElementById("cdSecs");
+    const $note = document.getElementById("cdNote");
+
+    function pad2(n){ return String(n).padStart(2, "0"); }
+
+    function tick(){
+      const now = new Date();
+      let diff = target.getTime() - now.getTime();
+
+      if(diff <= 0){
+        $dys.textContent = "0";
+        $hrs.textContent = "00";
+        $min.textContent = "00";
+        $sec.textContent = "00";
+        $note.textContent = "Je to tady ❤️";
+        return;
+      }
+
+      const totalSec = Math.floor(diff / 1000);
+      const days = Math.floor(totalSec / 86400);
+      const hours = Math.floor((totalSec % 86400) / 3600);
+      const mins = Math.floor((totalSec % 3600) / 60);
+      const secs = totalSec % 60;
+
+      $dys.textContent = String(days);
+      $hrs.textContent = pad2(hours);
+      $min.textContent = pad2(mins);
+      $sec.textContent = pad2(secs);
+
+      $note.textContent = "22. 8. 2026 • 11:00 • Penzion Mezi Vinohrady, Hovorany 696 12";
+    }
+
+    tick();
+    setInterval(tick, 250);
   </script>
 </body>
 </html>
