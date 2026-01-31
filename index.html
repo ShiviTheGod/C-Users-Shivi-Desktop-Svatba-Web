@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Aneta & Martin Šivelovi – svatba</title>
-  <meta name="description" content="Informace ke svatbě: odpočet, harmonogram, místo, doprava, ubytování, FAQ." />
+  <meta name="description" content="Informace ke svatbě: odpočet, harmonogram, místo, doprava, ubytování, galerie, FAQ." />
 
   <style>
     :root{
@@ -77,11 +77,27 @@
       font-size: 14px;
       letter-spacing: .1px;
       cursor: pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
     }
     .btn:hover{border-color: rgba(17,24,39,.16)}
     .btn.primary{
       border-color: rgba(127,174,156,.55);
       background: rgba(127,174,156,.18);
+    }
+
+    /* Active section in nav */
+    .navlink.active{
+      border-color: rgba(127,174,156,.75);
+      background: rgba(127,174,156,.22);
+      box-shadow: 0 6px 18px rgba(127,174,156,.12);
+    }
+
+    /* Keyboard focus */
+    .btn:focus-visible{
+      outline: 3px solid rgba(210,165,188,.35);
+      outline-offset: 2px;
     }
 
     /* Header (Editorial) */
@@ -106,7 +122,6 @@
       pointer-events:none;
       background-repeat:no-repeat;
       background-size:contain;
-      filter: blur(.0px);
     }
     header::before{
       left: -10px;
@@ -294,6 +309,31 @@
     .what{color: var(--muted)}
     .what b{color: var(--text)}
 
+    /* Gallery placeholders */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .ph{
+      grid-column: span 12;
+      border: 1px dashed rgba(17,24,39,.18);
+      border-radius: 16px;
+      background: rgba(255,255,255,.70);
+      aspect-ratio: 4 / 3;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(17,24,39,.55);
+      font-size: 14px;
+      letter-spacing: .12px;
+      user-select:none;
+    }
+    @media (min-width: 720px){
+      .ph{grid-column: span 4}
+    }
+
     /* FAQ */
     details{
       border-top: 1px solid var(--line);
@@ -323,20 +363,38 @@
       padding-top: 16px;
       font-size: var(--small);
     }
+
+    /* Back to top button */
+    .totop{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 50;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .totop.show{
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
   </style>
 </head>
 
 <body>
   <nav>
     <div class="navin">
-      <a class="btn" href="#top">Úvod</a>
-      <a class="btn" href="#odpocet">Odpočet</a>
-      <a class="btn" href="#harmonogram">Harmonogram</a>
-      <a class="btn" href="#misto">Místo</a>
-      <a class="btn" href="#doprava">Doprava</a>
-      <a class="btn" href="#ubytovani">Ubytování</a>
-      <a class="btn" href="#faq">FAQ</a>
-      <a class="btn primary" href="#kontakt">Kontakt</a>
+      <a class="btn navlink" href="#top">Úvod</a>
+      <a class="btn navlink" href="#odpocet">Odpočet</a>
+      <a class="btn navlink" href="#harmonogram">Harmonogram</a>
+      <a class="btn navlink" href="#misto">Místo</a>
+      <a class="btn navlink" href="#doprava">Doprava</a>
+      <a class="btn navlink" href="#ubytovani">Ubytování</a>
+      <a class="btn navlink" href="#galerie">Galerie</a>
+      <a class="btn navlink" href="#faq">FAQ</a>
+      <a class="btn navlink primary" href="#kontakt">Kontakt</a>
     </div>
   </nav>
 
@@ -359,6 +417,9 @@
         </div>
 
         <div class="side">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://forms.gle/PASTE-YOUR-FORM-LINK">
+            RSVP formulář
+          </a>
           <div class="badge">Penzion Mezi Vinohrady</div>
           <a class="btn" href="#misto">Mapa</a>
         </div>
@@ -475,6 +536,24 @@
         </div>
       </section>
 
+      <section class="card" id="galerie">
+        <h2>Galerie</h2>
+        <p>(zatím připraveno) – sem později vložíme fotky.</p>
+
+        <div class="gallery" aria-label="Galerie – zástupné pozice">
+          <div class="ph">Foto 1</div>
+          <div class="ph">Foto 2</div>
+          <div class="ph">Foto 3</div>
+          <div class="ph">Foto 4</div>
+          <div class="ph">Foto 5</div>
+          <div class="ph">Foto 6</div>
+        </div>
+
+        <div class="note small" style="margin-top:12px">
+          Až budeš chtít, uděláme sem „upload link“ (např. Google Photos album) nebo mřížku fotek z repozitáře.
+        </div>
+      </section>
+
       <section class="card" id="faq">
         <h2>FAQ</h2>
         <p>Nejčastější otázky na jednom místě.</p>
@@ -482,7 +561,7 @@
         <details>
           <summary>Do kdy dát vědět účast?</summary>
           <div class="small" style="color:var(--muted); margin-top:8px;">
-            (doplníme) – datum RSVP a způsob potvrzení.
+            Potvrzení účasti doplníme. Do té doby stačí napsat.
           </div>
         </details>
 
@@ -519,7 +598,7 @@
         </div>
 
         <p class="small" style="margin-top:12px; color:var(--muted)">
-          Pokud budete chtít RSVP přes formulář, přidáme sem tlačítko.
+          RSVP odkaz je také v horní části stránky.
         </p>
       </section>
 
@@ -528,6 +607,11 @@
     <footer>
       Aktualizováno: <span id="updated"></span>
     </footer>
+  </div>
+
+  <!-- Back to top button -->
+  <div class="totop" id="toTop">
+    <a class="btn" href="#top">Nahoru</a>
   </div>
 
   <script>
@@ -588,6 +672,59 @@
 
     tick();
     setInterval(tick, 250);
+
+    // Aktivní sekce v navigaci
+    const navLinks = Array.from(document.querySelectorAll(".navlink"));
+
+    function setActive(hash){
+      navLinks.forEach(a => {
+        const isActive = a.getAttribute("href") === hash;
+        a.classList.toggle("active", isActive);
+      });
+    }
+
+    if (location.hash) setActive(location.hash);
+    else setActive("#top");
+
+    const sections = [
+      document.getElementById("top"),
+      document.getElementById("odpocet"),
+      document.getElementById("harmonogram"),
+      document.getElementById("misto"),
+      document.getElementById("doprava"),
+      document.getElementById("ubytovani"),
+      document.getElementById("galerie"),
+      document.getElementById("faq"),
+      document.getElementById("kontakt")
+    ].filter(Boolean);
+
+    const obs = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if(!visible) return;
+      setActive("#" + visible.target.id);
+    }, {
+      root: null,
+      threshold: [0.20, 0.35, 0.50, 0.65],
+      rootMargin: "-20% 0px -55% 0px"
+    });
+
+    sections.forEach(s => obs.observe(s));
+
+    navLinks.forEach(a => {
+      a.addEventListener("click", () => setActive(a.getAttribute("href")));
+    });
+
+    // Back to top visibility
+    const toTop = document.getElementById("toTop");
+    function onScroll(){
+      const show = window.scrollY > 500;
+      toTop.classList.toggle("show", show);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
   </script>
 </body>
 </html>
