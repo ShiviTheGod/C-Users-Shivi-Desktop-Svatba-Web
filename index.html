@@ -90,12 +90,14 @@
       text-decoration:none;
     }
     .btn:active{transform: translateY(0)}
+
+    /* IMPORTANT: primary v navigaci už není permanentně "zvýrazněné" */
     .btn.primary{
-      border-color: rgba(127,174,156,.55);
-      background: rgba(127,174,156,.18);
+      border-color: rgba(210,165,188,.55);
+      background: rgba(255,255,255,.70);
     }
 
-    /* Active section in nav */
+    /* Active section in nav – pouze 1 současně */
     .navlink.active{
       border-color: rgba(127,174,156,.75);
       background: rgba(127,174,156,.22);
@@ -120,7 +122,7 @@
       overflow: hidden;
     }
 
-    /* Floral corners (jemné SVG jen v rozích) */
+    /* Floral corners */
     header::before, header::after{
       content:"";
       position:absolute;
@@ -199,7 +201,6 @@
       font-size: 16px;
     }
 
-    /* Constrain long text for readability */
     .measure{max-width: 68ch}
 
     .meta{
@@ -244,7 +245,7 @@
       gap: 16px;
     }
 
-    /* Card minimal + hover */
+    /* Cards */
     .card{
       grid-column: span 12;
       background: var(--paper);
@@ -313,7 +314,7 @@
       font-size: var(--small);
     }
 
-    /* Harmonogram */
+    /* Timeline */
     .timeline{margin: 12px 0 0; padding: 0; list-style: none}
     .timeline li{
       display:flex;
@@ -386,7 +387,7 @@
       font-size: var(--small);
     }
 
-    /* Back to top button */
+    /* Back to top */
     .totop{
       position: fixed;
       right: 16px;
@@ -631,7 +632,6 @@
     </footer>
   </div>
 
-  <!-- Back to top button -->
   <div class="totop" id="toTop">
     <a class="btn" href="#top">Nahoru</a>
   </div>
@@ -642,13 +642,27 @@
     document.getElementById("updated").textContent =
       d.toLocaleDateString("cs-CZ", { year:"numeric", month:"long", day:"numeric" });
 
-    // Hladké posouvání
+    // Nav odkazy
+    const navLinks = Array.from(document.querySelectorAll(".navlink"));
+    const navEl = document.querySelector("nav");
+
+    function setActive(hash){
+      // vždy jen jeden aktivní
+      navLinks.forEach(a => a.classList.remove("active"));
+      const found = navLinks.find(a => a.getAttribute("href") === hash);
+      if(found) found.classList.add("active");
+    }
+
+    // Hladké posouvání + okamžité zvýraznění
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener("click", (e) => {
         const id = a.getAttribute("href");
         const el = document.querySelector(id);
         if(!el) return;
+
         e.preventDefault();
+        setActive(id); // okamžitě
+
         el.scrollIntoView({behavior:"smooth", block:"start"});
         history.pushState(null, "", id);
       });
@@ -695,19 +709,7 @@
     tick();
     setInterval(tick, 250);
 
-    // Aktivní sekce v navigaci
-    const navLinks = Array.from(document.querySelectorAll(".navlink"));
-
-    function setActive(hash){
-      navLinks.forEach(a => {
-        const isActive = a.getAttribute("href") === hash;
-        a.classList.toggle("active", isActive);
-      });
-    }
-
-    if (location.hash) setActive(location.hash);
-    else setActive("#top");
-
+    // Sekce pro scroll-spy (spolehlivější než IntersectionObserver = žádné opoždění)
     const sections = [
       document.getElementById("top"),
       document.getElementById("odpocet"),
@@ -720,33 +722,49 @@
       document.getElementById("kontakt")
     ].filter(Boolean);
 
-    const obs = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+    let raf = 0;
+    function updateSpy(){
+      raf = 0;
 
-      if(!visible) return;
-      setActive("#" + visible.target.id);
-    }, {
-      root: null,
-      threshold: [0.20, 0.35, 0.50, 0.65],
-      rootMargin: "-20% 0px -55% 0px"
-    });
+      const navH = navEl ? navEl.offsetHeight : 0;
+      const y = navH + 16; // offset pod navigací
 
-    sections.forEach(s => obs.observe(s));
+      // vyber poslední sekci, která už "přejela" pod nav
+      let current = sections[0];
+      for(const s of sections){
+        const r = s.getBoundingClientRect();
+        if(r.top <= y) current = s;
+      }
+      setActive("#" + current.id);
+    }
 
-    navLinks.forEach(a => {
-      a.addEventListener("click", () => setActive(a.getAttribute("href")));
-    });
+    function onScroll(){
+      if(raf) return;
+      raf = requestAnimationFrame(updateSpy);
+    }
+
+    // init
+    if (location.hash) setActive(location.hash);
+    else setActive("#top");
+    updateSpy();
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
 
     // Back to top visibility
     const toTop = document.getElementById("toTop");
-    function onScroll(){
+    function onTopButton(){
       const show = window.scrollY > 500;
       toTop.classList.toggle("show", show);
     }
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    onTopButton();
+    window.addEventListener("scroll", onTopButton, { passive: true });
+
+    // když se změní hash (např. tlačítko zpět v prohlížeči)
+    window.addEventListener("popstate", () => {
+      if(location.hash) setActive(location.hash);
+      updateSpy();
+    });
   </script>
 </body>
 </html>
