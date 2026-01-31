@@ -11395,3 +11395,56 @@ header.masthead .container{
 }
 #rsvp .link-light{color: rgba(255,255,255,.90)}
 #rsvp .link-light:hover{color: #fff}
+
+
+
+/* ===== Custom wedding palette overrides ===== */
+:root{
+  --sv-cream: #f7e7ce;
+  --sv-brown: #8b5e3c;
+  --sv-pink:  #d8a7a0;
+  --sv-green: #1d6142;
+  --sv-sand:  #e6be8a;
+}
+
+/* Navbar (header) theme */
+#mainNav{
+  background-color: var(--sv-green) !important;
+}
+#mainNav.navbar-shrink{
+  background-color: var(--sv-green) !important;
+}
+#mainNav .navbar-brand{
+  color: var(--sv-sand) !important;
+}
+#mainNav .navbar-brand:hover{
+  color: var(--sv-cream) !important;
+}
+#mainNav .navbar-nav .nav-link{
+  color: rgba(247,231,206,.92) !important;
+}
+#mainNav .navbar-nav .nav-link:hover{
+  color: var(--sv-sand) !important;
+}
+#mainNav .navbar-nav .nav-link.active{
+  color: #ffffff !important;
+}
+
+/* Service icons (Místo / Datum / Doprava) */
+#services .fa-stack-2x.text-primary{
+  color: var(--sv-brown) !important;
+}
+
+/* Navigovat button */
+a.btn-nav.btn-outline-primary{
+  --bs-btn-color: var(--sv-green);
+  --bs-btn-border-color: var(--sv-green);
+  --bs-btn-hover-color: var(--sv-cream);
+  --bs-btn-hover-bg: var(--sv-green);
+  --bs-btn-hover-border-color: var(--sv-green);
+  --bs-btn-active-color: var(--sv-cream);
+  --bs-btn-active-bg: #174d34;
+  --bs-btn-active-border-color: #174d34;
+  --bs-btn-focus-shadow-rgb: 29,97,66;
+}
+
