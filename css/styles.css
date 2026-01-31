@@ -11398,53 +11398,312 @@ header.masthead .container{
 
 
 
-/* ===== Custom wedding palette overrides ===== */
+
+/* ===== Wedding palette + custom layout (navbar/hero/cards/RSVP) ===== */
 :root{
   --sv-cream: #f7e7ce;
   --sv-brown: #8b5e3c;
   --sv-pink:  #d8a7a0;
   --sv-green: #1d6142;
+  --sv-green-dark: #164a33;
   --sv-sand:  #e6be8a;
+
+  --sv-text: #0f172a;
+  --sv-muted: rgba(15,23,42,.72);
+  --sv-line: rgba(15,23,42,.12);
 }
 
-/* Navbar (header) theme */
-#mainNav{
-  background-color: var(--sv-green) !important;
+/* Page background inspiration */
+body{
+  background-color: #ffffff;
 }
-#mainNav.navbar-shrink{
-  background-color: var(--sv-green) !important;
-}
-#mainNav .navbar-brand{
-  color: var(--sv-sand) !important;
-}
-#mainNav .navbar-brand:hover{
-  color: var(--sv-cream) !important;
-}
-#mainNav .navbar-nav .nav-link{
-  color: rgba(247,231,206,.92) !important;
-}
-#mainNav .navbar-nav .nav-link:hover{
-  color: var(--sv-sand) !important;
-}
-#mainNav .navbar-nav .nav-link.active{
-  color: #ffffff !important;
+.section-soft{
+  background: var(--sv-cream);
 }
 
-/* Service icons (Místo / Datum / Doprava) */
-#services .fa-stack-2x.text-primary{
-  color: var(--sv-brown) !important;
+/* ===== Navbar ===== */
+nav.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--sv-green);
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+nav.navbar .nav-inner{
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+}
+nav.navbar .brand{
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: var(--sv-sand);
+  text-transform: uppercase;
+  font-size: 20px;
+  white-space: nowrap;
+}
+nav.navbar .nav-links{
+  display:flex;
+  gap: 34px;
+  align-items:center;
+}
+nav.navbar .nav-links a{
+  color: rgba(247,231,206,.92);
+  text-decoration:none;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+nav.navbar .nav-links a:hover{
+  color: var(--sv-sand);
 }
 
-/* Navigovat button */
-a.btn-nav.btn-outline-primary{
-  --bs-btn-color: var(--sv-green);
-  --bs-btn-border-color: var(--sv-green);
-  --bs-btn-hover-color: var(--sv-cream);
-  --bs-btn-hover-bg: var(--sv-green);
-  --bs-btn-hover-border-color: var(--sv-green);
-  --bs-btn-active-color: var(--sv-cream);
-  --bs-btn-active-bg: #174d34;
-  --bs-btn-active-border-color: #174d34;
-  --bs-btn-focus-shadow-rgb: 29,97,66;
+/* ===== Hero ===== */
+header.hero{
+  position: relative;
+  min-height: 76vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 90px 20px 70px; /* room for sticky nav */
+  background-image: url("../assets/img/header-bg.jpg");
+  background-size: cover;
+  /* posun nahoru, aby tváře nebyly pod lištou */
+  background-position: center 22%;
+}
+@media (max-width: 768px){
+  header.hero{ background-position: center 18%; min-height: 70vh; }
+}
+header.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.34);
+}
+header.hero .hero-content{
+  position: relative;
+  text-align:center;
+  color: #fff;
+  max-width: 980px;
+}
+header.hero h2{
+  margin: 0 0 10px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: .02em;
+  opacity: .96;
+}
+header.hero h1{
+  margin: 0 0 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: clamp(38px, 6vw, 66px);
+}
+.hero-place{
+  margin-top: 16px;
+  font-size: 14px;
+  color: rgba(255,255,255,.92);
 }
 
+/* Countdown tiles */
+.countdown{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 14px;
+  justify-content:center;
+}
+.countdown > div{
+  min-width: 140px;
+  padding: 14px 14px 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(6px);
+}
+.countdown span{
+  display:block;
+  font-size: clamp(34px, 4.8vw, 58px);
+  font-weight: 900;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+.countdown small{
+  display:block;
+  margin-top: 6px;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.90);
+}
+
+/* ===== Sections ===== */
+.section{
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 78px 20px;
+}
+.section h2{
+  text-align:center;
+  margin: 0 0 10px;
+  font-size: 40px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: var(--sv-text);
+}
+.section > p{
+  text-align:center;
+  margin: 0 0 44px;
+  color: var(--sv-muted);
+  font-family: "Roboto Slab", serif;
+  font-style: italic;
+}
+
+/* Services cards */
+.cards{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+@media (max-width: 900px){
+  .cards{ grid-template-columns: 1fr; }
+}
+.card{
+  background: #fff;
+  border: 1px solid var(--sv-line);
+  border-radius: 18px;
+  padding: 28px 24px 26px;
+  text-align:center;
+  box-shadow: 0 18px 50px rgba(15,23,42,.06);
+}
+.card i{
+  width: 86px;
+  height: 86px;
+  border-radius: 999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background: var(--sv-brown); /* icon circle */
+  color: #fff;
+  font-size: 32px;
+  margin-bottom: 18px;
+}
+.card h3{
+  margin: 0 0 12px;
+  font-weight: 900;
+  font-size: 34px;
+  color: var(--sv-text);
+}
+.card p{
+  margin: 0 0 18px;
+  color: var(--sv-muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* Buttons (used in cards + RSVP) */
+.btn-primary, .btn-outline{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  padding: 16px 22px;
+  border-radius: 10px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration:none;
+  font-size: 14px;
+  min-width: 260px;
+  transition: transform .14s ease, background-color .14s ease, border-color .14s ease, color .14s ease, box-shadow .14s ease;
+}
+.btn-primary{
+  background: var(--sv-green);
+  border: 2px solid var(--sv-green);
+  color: var(--sv-cream);
+  box-shadow: 0 14px 30px rgba(29,97,66,.18);
+}
+.btn-primary:hover{
+  background: var(--sv-green-dark);
+  border-color: var(--sv-green-dark);
+  color: var(--sv-cream);
+  transform: translateY(-1px);
+}
+.btn-outline{
+  background: rgba(255,255,255,.78);
+  border: 2px solid var(--sv-green);
+  color: var(--sv-green);
+}
+.btn-outline:hover{
+  background: var(--sv-green);
+  color: var(--sv-cream);
+  transform: translateY(-1px);
+}
+@media (max-width: 520px){
+  .btn-primary, .btn-outline{ min-width: 100%; }
+}
+
+/* RSVP section styling */
+#rsvp .cta{
+  display:flex;
+  justify-content:center;
+  gap: 16px;
+  flex-wrap:wrap;
+  margin: 26px 0 26px;
+}
+#rsvp .contact{
+  text-align:center;
+  margin-top: 10px;
+  color: var(--sv-text);
+}
+#rsvp .contact-line{
+  margin: 6px 0 0;
+  color: rgba(15,23,42,.78);
+}
+#rsvp .contact a{ color: var(--sv-green); text-decoration:none; }
+#rsvp .contact a:hover{ text-decoration:underline; }
+
+/* Footer */
+footer.footer{
+  padding: 26px 20px;
+  text-align:center;
+  color: rgba(15,23,42,.62);
+  border-top: 1px solid var(--sv-line);
+}
+
+/* Scroll-to-top button */
+#scrollTop{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1100;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity .16s ease, transform .16s ease;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 2px solid var(--sv-green);
+  background: rgba(255,255,255,.88);
+  color: var(--sv-green);
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  box-shadow: 0 18px 40px rgba(15,23,42,.10);
+}
+#scrollTop.show{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+#scrollTop:hover{
+  background: var(--sv-green);
+  color: var(--sv-cream);
+}
