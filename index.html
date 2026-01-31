@@ -1,422 +1,416 @@
 <!DOCTYPE html>
-
 <html lang="cs">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
-<meta content="Informace ke svatbě Anety a Martina Šivelových: odpočet, harmonogram, místo konání, doprava, ubytování, galerie, FAQ a RSVP." name="description"/>
-<meta content="" name="author"/>
-<title>Aneta &amp; Martin Šivelovi – Svatba</title>
-<!-- Favicon-->
-<link href="assets/favicon.ico" rel="icon" type="image/x-icon"/>
-<!-- Font Awesome icons (free version)-->
-<script crossorigin="anonymous" src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
-<!-- Google fonts-->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="css/styles.css" rel="stylesheet"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Informace ke svatbě Anety a Martina: odpočet, harmonogram, místo, FAQ a RSVP." />
+  <title>Aneta &amp; Martin Šivelovi – Svatba</title>
+
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+
+  <link href="css/styles.css" rel="stylesheet" />
+
+  <style>
+    /* Hero: větší odpočet + čitelnost na fotce */
+    header.masthead::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: rgba(0,0,0,.38);
+    }
+    header.masthead > .container{ position: relative; z-index: 1; }
+
+    .hero-countdown{
+      margin-top: 26px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-countdown .cd{
+      min-width: 140px;
+      padding: 14px 14px 12px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(6px);
+      text-align: center;
+    }
+    .hero-countdown .num{
+      font-size: clamp(34px, 4.2vw, 56px);
+      font-weight: 800;
+      letter-spacing: .5px;
+      line-height: 1.05;
+      font-variant-numeric: tabular-nums;
+      color: #fff;
+    }
+    .hero-countdown .lab{
+      margin-top: 6px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .9;
+      color: #fff;
+    }
+    .hero-subline{
+      margin-top: 14px;
+      color: rgba(255,255,255,.92);
+      font-size: 14px;
+      letter-spacing: .02em;
+    }
+
+    /* Ztlumení „primary“ v navigaci (ať není permanentně zvýrazněná položka) */
+    #mainNav .navbar-nav .nav-link.active{
+      color: #fff;
+      opacity: 1;
+    }
+  </style>
 </head>
+
 <body id="page-top">
-<!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-<div class="container">
-<a class="navbar-brand" href="#page-top">Aneta &amp; Martin</a>
-<button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarResponsive" data-bs-toggle="collapse" type="button">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-</button>
-<div class="collapse navbar-collapse" id="navbarResponsive">
-<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-<li class="nav-item"><a class="nav-link" href="#services">Informace</a></li>
-<li class="nav-item"><a class="nav-link" href="#portfolio">Galerie</a></li>
-<li class="nav-item"><a class="nav-link" href="#about">Harmonogram</a></li>
-<li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-<li class="nav-item"><a class="nav-link" href="#rsvp">RSVP</a></li>
-</ul>
-</div>
-</div>
-</nav>
-<!-- Masthead-->
-<header class="masthead">
-<div class="container">
-<div class="masthead-subheading">Aneta &amp; Martin Šivelovi</div>
-<div class="masthead-heading text-uppercase">22. srpna 2026</div>
-<div class="countdown-wrap mt-4">
-<div aria-live="polite" class="countdown">
-<div class="cd">
-<div class="num" id="cdDays">–</div>
-<div class="lab">Dní</div>
-</div>
-<div class="cd">
-<div class="num" id="cdHours">–</div>
-<div class="lab">Hodin</div>
-</div>
-<div class="cd">
-<div class="num" id="cdMins">–</div>
-<div class="lab">Minut</div>
-</div>
-<div class="cd">
-<div class="num" id="cdSecs">–</div>
-<div class="lab">Sekund</div>
-</div>
-</div>
-<div class="countdown-note" id="cdNote">Penzion Mezi Vinohrady, Hovorany 696 12</div>
-</div>
-</div>
-</header>
-<!-- Services-->
-<section class="page-section" id="services">
-<div class="container">
-<div class="text-center">
-<h2 class="section-heading text-uppercase">Praktické informace</h2>
-<h3 class="section-subheading text-muted">Místo, doprava a ubytování</h3>
-</div>
-<div class="row text-center">
-<div class="col-md-4">
-<span class="fa-stack fa-4x">
-<i class="fas fa-circle fa-stack-2x text-primary"></i>
-<i class="fas fa-map-marker-alt fa-stack-1x fa-inverse"></i>
-</span>
-<h4 class="my-3">Místo konání</h4>
-<p class="text-muted">Penzion Mezi Vinohrady, Hovorany 696 12. Odkazy na mapu a navigaci najdete níže.</p>
-</div>
-<div class="col-md-4">
-<span class="fa-stack fa-4x">
-<i class="fas fa-circle fa-stack-2x text-primary"></i>
-<i class="fas fa-route fa-stack-1x fa-inverse"></i>
-</span>
-<h4 class="my-3">Doprava a parkování</h4>
-<p class="text-muted">Doplníme doporučení k příjezdu, parkování a případně taxi.</p>
-</div>
-<div class="col-md-4">
-<span class="fa-stack fa-4x">
-<i class="fas fa-circle fa-stack-2x text-primary"></i>
-<i class="fas fa-bed fa-stack-1x fa-inverse"></i>
-</span>
-<h4 class="my-3">Ubytování</h4>
-<p class="text-muted">Doplníme tipy na ubytování v místě a okolí.</p>
-</div>
-</div>
 
-<div class="text-center mt-4">
-<a class="btn btn-primary btn-xl text-uppercase me-2" href="https://www.google.com/maps/search/?api=1&amp;query=Penzion+Mezi+Vinohrady%2C+696+12+Hovorany" rel="noopener" target="_blank">Otevřít v Google Maps</a>
-<a class="btn btn-outline-dark btn-xl text-uppercase" href="https://www.google.com/maps/dir/?api=1&amp;destination=Penzion+Mezi+Vinohrady%2C+696+12+Hovorany" rel="noopener" target="_blank">Navigovat</a>
-</div>
-</div>
-</section>
-<!-- Portfolio Grid-->
-<section class="page-section bg-light" id="portfolio">
-<div class="container">
-<div class="text-center">
-<h2 class="section-heading text-uppercase">Galerie</h2>
-<h3 class="section-subheading text-muted">Fotky doplníme</h3>
-</div>
-<div class="row">
-<div class="col-lg-4 col-sm-6 mb-4">
-<!-- Portfolio item 1-->
-<div class="portfolio-item">
-<a class="portfolio-link" href="assets/img/portfolio/1.jpg" rel="noopener" target="_blank">
-<div class="portfolio-hover">
-<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-</div>
-<img alt="..." class="img-fluid" src="assets/img/portfolio/1.jpg"/>
-</a>
-<div class="portfolio-caption">
-<div class="portfolio-caption-heading">Foto 1</div>
-<div class="portfolio-caption-subheading text-muted"></div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-sm-6 mb-4">
-<!-- Portfolio item 2-->
-<div class="portfolio-item">
-<a class="portfolio-link" href="assets/img/portfolio/2.jpg" rel="noopener" target="_blank">
-<div class="portfolio-hover">
-<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-</div>
-<img alt="..." class="img-fluid" src="assets/img/portfolio/2.jpg"/>
-</a>
-<div class="portfolio-caption">
-<div class="portfolio-caption-heading">Foto 2</div>
-<div class="portfolio-caption-subheading text-muted"></div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-sm-6 mb-4">
-<!-- Portfolio item 3-->
-<div class="portfolio-item">
-<a class="portfolio-link" href="assets/img/portfolio/3.jpg" rel="noopener" target="_blank">
-<div class="portfolio-hover">
-<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-</div>
-<img alt="..." class="img-fluid" src="assets/img/portfolio/3.jpg"/>
-</a>
-<div class="portfolio-caption">
-<div class="portfolio-caption-heading">Foto 3</div>
-<div class="portfolio-caption-subheading text-muted"></div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-<!-- Portfolio item 4-->
-<div class="portfolio-item">
-<a class="portfolio-link" href="assets/img/portfolio/4.jpg" rel="noopener" target="_blank">
-<div class="portfolio-hover">
-<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-</div>
-<img alt="..." class="img-fluid" src="assets/img/portfolio/4.jpg"/>
-</a>
-<div class="portfolio-caption">
-<div class="portfolio-caption-heading">Foto 4</div>
-<div class="portfolio-caption-subheading text-muted"></div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-<!-- Portfolio item 5-->
-<div class="portfolio-item">
-<a class="portfolio-link" href="assets/img/portfolio/5.jpg" rel="noopener" target="_blank">
-<div class="portfolio-hover">
-<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-</div>
-<img alt="..." class="img-fluid" src="assets/img/portfolio/5.jpg"/>
-</a>
-<div class="portfolio-caption">
-<div class="portfolio-caption-heading">Foto 5</div>
-<div class="portfolio-caption-subheading text-muted"></div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-sm-6">
-<!-- Portfolio item 6-->
-<div class="portfolio-item">
-<a class="portfolio-link" href="assets/img/portfolio/6.jpg" rel="noopener" target="_blank">
-<div class="portfolio-hover">
-<div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-</div>
-<img alt="..." class="img-fluid" src="assets/img/portfolio/6.jpg"/>
-</a>
-<div class="portfolio-caption">
-<div class="portfolio-caption-heading">Foto 6</div>
-<div class="portfolio-caption-subheading text-muted"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- About-->
-<section class="page-section" id="about">
-<div class="container">
-<div class="text-center">
-<h2 class="section-heading text-uppercase">Harmonogram dne</h2>
-<h3 class="section-subheading text-muted">Časy jsou orientační. Finální upřesníme.</h3>
-</div>
-<ul class="timeline">
-<li>
-<div class="timeline-image"><img alt="..." class="rounded-circle img-fluid" src="assets/img/about/1.jpg"/></div>
-<div class="timeline-panel">
-<div class="timeline-heading">
-<h4>10:00</h4>
-<h4 class="subheading">Příjezd hostů</h4>
-</div>
-<div class="timeline-body"><p class="text-muted">Prosíme o příjezd s rezervou. Na místě bude připravené uvítání.</p></div>
-</div>
-</li>
-<li class="timeline-inverted">
-<div class="timeline-image"><img alt="..." class="rounded-circle img-fluid" src="assets/img/about/2.jpg"/></div>
-<div class="timeline-panel">
-<div class="timeline-heading">
-<h4>11:00</h4>
-<h4 class="subheading">Obřad</h4>
-</div>
-<div class="timeline-body"><p class="text-muted">Obřad začne v 11:00.</p></div>
-</div>
-</li>
-<li>
-<div class="timeline-image"><img alt="..." class="rounded-circle img-fluid" src="assets/img/about/3.jpg"/></div>
-<div class="timeline-panel">
-<div class="timeline-heading">
-<h4>12:00</h4>
-<h4 class="subheading">Gratulace a společné foto</h4>
-</div>
-<div class="timeline-body"><p class="text-muted">Po obřadu bude prostor na gratulace a společnou fotografii.</p></div>
-</div>
-</li>
-<li class="timeline-inverted">
-<div class="timeline-image"><img alt="..." class="rounded-circle img-fluid" src="assets/img/about/4.jpg"/></div>
-<div class="timeline-panel">
-<div class="timeline-heading">
-<h4>13:30</h4>
-<h4 class="subheading">Hostina</h4>
-</div>
-<div class="timeline-body"><p class="text-muted">Následuje slavnostní oběd/hostina.</p></div>
-</div>
-</li>
-
-</ul>
-</div>
-</section>
-<!-- Team-->
-<section class="page-section bg-light" id="faq">
-<div class="container">
-<div class="text-center">
-<h2 class="section-heading text-uppercase">FAQ</h2>
-<h3 class="section-subheading text-muted">Nejčastější otázky</h3>
-</div>
-
-
-
-<div class="accordion" id="faqAccordion">
-<div class="accordion-item">
-<h2 class="accordion-header" id="faq1h">
-<button aria-controls="faq1" aria-expanded="true" class="accordion-button" data-bs-target="#faq1" data-bs-toggle="collapse" type="button">
-        Do kdy dát vědět účast?
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#page-top">Aneta &amp; Martin</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu <i class="fas fa-bars ms-1"></i>
       </button>
-</h2>
-<div aria-labelledby="faq1h" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion" id="faq1">
-<div class="accordion-body">
-        Termín potvrzení účasti doplníme. Do té doby stačí napsat nebo využít RSVP odkaz níže.
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#services">Informace</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Harmonogram</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#rsvp">RSVP</a></li>
+        </ul>
       </div>
-</div>
-</div>
-<div class="accordion-item">
-<h2 class="accordion-header" id="faq2h">
-<button aria-controls="faq2" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#faq2" data-bs-toggle="collapse" type="button">
-        Dietní omezení
-      </button>
-</h2>
-<div aria-labelledby="faq2h" class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="faq2">
-<div class="accordion-body">
-        Napište nám prosím dopředu, ať s tím počítáme.
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="container">
+      <div class="masthead-subheading">Aneta &amp; Martin Šivelovi</div>
+      <!-- bez času -->
+      <div class="masthead-heading text-uppercase">22. srpna 2026</div>
+
+      <!-- Velký odpočet -->
+      <div class="hero-countdown" aria-live="polite">
+        <div class="cd">
+          <div class="num" id="cdDays">–</div>
+          <div class="lab">Dní</div>
+        </div>
+        <div class="cd">
+          <div class="num" id="cdHours">–</div>
+          <div class="lab">Hodin</div>
+        </div>
+        <div class="cd">
+          <div class="num" id="cdMins">–</div>
+          <div class="lab">Minut</div>
+        </div>
+        <div class="cd">
+          <div class="num" id="cdSecs">–</div>
+          <div class="lab">Sekund</div>
+        </div>
       </div>
-</div>
-</div>
-<div class="accordion-item">
-<h2 class="accordion-header" id="faq3h">
-<button aria-controls="faq3" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#faq3" data-bs-toggle="collapse" type="button">
-        Děti
-      </button>
-</h2>
-<div aria-labelledby="faq3h" class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="faq3">
-<div class="accordion-body">
-        Doplníme informace.
+
+      <div class="hero-subline" id="cdNote">Penzion Mezi Vinohrady, Hovorany 696 12</div>
+
+      <!-- RSVP tlačítko v hero je pryč úmyslně -->
+    </div>
+  </header>
+
+  <!-- Services / Informace -->
+  <section class="page-section" id="services">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">Informace</h2>
+        <h3 class="section-subheading text-muted">Základní informace k našemu dni</h3>
       </div>
-</div>
-</div>
-<div class="accordion-item">
-<h2 class="accordion-header" id="faq4h">
-<button aria-controls="faq4" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#faq4" data-bs-toggle="collapse" type="button">
-        Dress code
-      </button>
-</h2>
-<div aria-labelledby="faq4h" class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="faq4">
-<div class="accordion-body">
-        Nechceme nic diktovat. Přijďte tak, abyste se cítili dobře.
+
+      <div class="row text-center">
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-location-dot fa-stack-1x fa-inverse"></i>
+          </span>
+          <h4 class="my-3">Místo</h4>
+          <p class="text-muted">
+            Penzion Mezi Vinohrady<br />
+            Hovorany 696 12
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-calendar-days fa-stack-1x fa-inverse"></i>
+          </span>
+          <h4 class="my-3">Datum</h4>
+          <p class="text-muted">
+            22. srpna 2026<br />
+            Obřad v 11:00
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          <span class="fa-stack fa-4x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-car fa-stack-1x fa-inverse"></i>
+          </span>
+          <h4 class="my-3">Doprava</h4>
+          <p class="text-muted">
+            Parkování a doporučení doplníme.
+          </p>
+        </div>
       </div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Clients-->
-<div class="py-5">
-<div class="container">
-<div class="row align-items-center">
-<div class="col-md-3 col-sm-6 my-3">
-<a href="#!"><img alt="..." aria-label="Microsoft Logo" class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg"/></a>
-</div>
-<div class="col-md-3 col-sm-6 my-3">
-<a href="#!"><img alt="..." aria-label="Google Logo" class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg"/></a>
-</div>
-<div class="col-md-3 col-sm-6 my-3">
-<a href="#!"><img alt="..." aria-label="Facebook Logo" class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg"/></a>
-</div>
-<div class="col-md-3 col-sm-6 my-3">
-<a href="#!"><img alt="..." aria-label="IBM Logo" class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg"/></a>
-</div>
-</div>
-</div>
-</div>
-<!-- Contact-->
-<section class="page-section" id="rsvp">
-<div class="container">
-<div class="text-center">
-<h2 class="section-heading text-uppercase">RSVP a kontakt</h2>
-<h3 class="section-subheading text-muted">Potvrzení účasti a praktické dotazy</h3>
-</div>
-<!-- * * * * * * * * * * * * * * *-->
-<!-- * * SB Forms Contact Form * *-->
-<!-- * * * * * * * * * * * * * * *-->
-<!-- This form is pre-integrated with SB Forms.-->
-<!-- To make this form functional, sign up at-->
-<!-- https://startbootstrap.com/solution/contact-forms-->
-<!-- to get an API token!-->
 
+      <div class="text-center mt-4">
+        <a class="btn btn-outline-primary btn-lg"
+           target="_blank" rel="noopener"
+           href="https://www.google.com/maps/dir/?api=1&destination=Penzion+Mezi+Vinohrady%2C+696+12+Hovorany">
+          Navigovat
+        </a>
+      </div>
+    </div>
+  </section>
 
-<div class="row align-items-stretch mb-4">
-<div class="col-lg-7 mb-4 mb-lg-0">
-<div class="rsvp-card">
-<h4 class="rsvp-title">Potvrzení účasti</h4>
-<p class="rsvp-text">
-        Nejjednodušší je použít RSVP formulář. Pokud vám to nevyhovuje, napište nám zprávu.
-      </p>
-<div class="d-flex flex-wrap gap-3">
-<a class="btn btn-primary btn-xl text-uppercase" href="https://forms.gle/PASTE-YOUR-FORM-LINK" rel="noopener" target="_blank">Otevřít RSVP formulář</a>
-<a class="btn btn-outline-light btn-xl text-uppercase" href="#misto">Zobrazit místo konání</a>
-</div>
-<p class="rsvp-mini mt-3">Odkaz nahraďte vaším Google Forms linkem.</p>
-</div>
-</div>
-<div class="col-lg-5">
-<div class="rsvp-card rsvp-card-light">
-<h4 class="rsvp-title">Kontakt</h4>
-<ul class="rsvp-list">
-<li><b>Aneta:</b> +420 …</li>
-<li><b>Martin:</b> +420 …</li>
-<li><b>E-mail:</b> …</li>
-</ul>
-<div class="mt-3">
-<a class="link-light" href="https://www.google.com/maps/search/?api=1&amp;query=Penzion+Mezi+Vinohrady%2C+696+12+Hovorany" rel="noopener" target="_blank">Otevřít mapu</a>
-<span class="mx-2">•</span>
-<a class="link-light" href="https://www.google.com/maps/dir/?api=1&amp;destination=Penzion+Mezi+Vinohrady%2C+696+12+Hovorany" rel="noopener" target="_blank">Navigovat</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Footer-->
-<footer class="footer py-4">
-<div class="container">
-<div class="row align-items-center">
-<div class="col-lg-6 text-lg-start small">Aneta &amp; Martin Šivelovi • 22. 08. 2026</div>
-<div class="col-lg-6 text-lg-end small"><span id="updated"></span></div>
-</div>
-</div>
-</footer>
-<!-- Portfolio Modals-->
-<!-- Portfolio item 1 modal popup-->
+  <!-- About / Harmonogram -->
+  <section class="page-section bg-light" id="about">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">Harmonogram</h2>
+        <h3 class="section-subheading text-muted">Časy jsou orientační</h3>
+      </div>
 
-<!-- Portfolio item 2 modal popup-->
+      <ul class="timeline">
+        <li>
+          <div class="timeline-image">
+            <img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="Příjezd hostů" />
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>10:00</h4>
+              <h4 class="subheading">Příjezd hostů</h4>
+            </div>
+            <div class="timeline-body"><p class="text-muted">Uvítání, usazení.</p></div>
+          </div>
+        </li>
 
-<!-- Portfolio item 3 modal popup-->
+        <li class="timeline-inverted">
+          <div class="timeline-image">
+            <img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="Obřad" />
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>11:00</h4>
+              <h4 class="subheading">Obřad</h4>
+            </div>
+            <div class="timeline-body"><p class="text-muted">Začínáme v 11:00.</p></div>
+          </div>
+        </li>
 
-<!-- Portfolio item 4 modal popup-->
+        <li>
+          <div class="timeline-image">
+            <img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="Gratulace" />
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>12:00</h4>
+              <h4 class="subheading">Gratulace a foto</h4>
+            </div>
+            <div class="timeline-body"><p class="text-muted">Společné focení.</p></div>
+          </div>
+        </li>
 
-<!-- Portfolio item 5 modal popup-->
+        <li class="timeline-inverted">
+          <div class="timeline-image">
+            <img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="Hostina" />
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>13:30</h4>
+              <h4 class="subheading">Hostina</h4>
+            </div>
+            <div class="timeline-body"><p class="text-muted">Oběd, přípitek.</p></div>
+          </div>
+        </li>
 
-<!-- Portfolio item 6 modal popup-->
+        <li class="timeline-inverted">
+          <div class="timeline-image">
+            <h4>
+              Těšíme<br />
+              se<br />
+              na vás
+            </h4>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+  <!-- FAQ -->
+  <section class="page-section" id="faq">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">FAQ</h2>
+        <h3 class="section-subheading text-muted">Nejčastější dotazy</h3>
+      </div>
 
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq1h">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
+                    aria-expanded="true" aria-controls="faq1">
+              Dress code
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq1h" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Nechceme nic diktovat. Přijďte tak, abyste se cítili dobře.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq2h">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
+                    aria-expanded="false" aria-controls="faq2">
+              Dietní omezení
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq2h" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Napište nám prosím předem, ať vše zařídíme.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq3h">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3"
+                    aria-expanded="false" aria-controls="faq3">
+              Děti
+            </button>
+          </h2>
+          <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faq3h" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Upřesníme.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq4h">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4"
+                    aria-expanded="false" aria-controls="faq4">
+              Ubytování
+            </button>
+          </h2>
+          <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faq4h" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Tipy doplníme. Pokud bude potřeba, pomůžeme s organizací.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="page-section bg-light" id="rsvp">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">RSVP</h2>
+        <h3 class="section-subheading text-muted">Potvrzení účasti</h3>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <p class="text-muted">Prosíme o potvrzení účasti přes formulář.</p>
+          <a class="btn btn-primary btn-xl text-uppercase"
+             href="https://forms.gle/PASTE-YOUR-FORM-LINK"
+             target="_blank" rel="noopener">
+            Otevřít RSVP formulář
+          </a>
+
+          <p class="text-muted mt-4">
+            Kontakt doplníme.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer py-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-4 text-lg-start">Aktualizováno: <span id="updated"></span></div>
+        <div class="col-lg-4 my-3 my-lg-0"></div>
+        <div class="col-lg-4 text-lg-end"></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS -->
+  <script src="js/scripts.js"></script>
+
+  <!-- Custom: updated + countdown -->
+  <script>
+    // Aktualizováno
+    const d = new Date();
+    const upd = document.getElementById("updated");
+    if (upd) upd.textContent = d.toLocaleDateString("cs-CZ", { year:"numeric", month:"long", day:"numeric" });
+
+    // Odpočet do obřadu: 22. 08. 2026 11:00 (měsíc 7 = srpen)
+    const target = new Date(2026, 7, 22, 11, 0, 0);
+
+    const $dys = document.getElementById("cdDays");
+    const $hrs = document.getElementById("cdHours");
+    const $min = document.getElementById("cdMins");
+    const $sec = document.getElementById("cdSecs");
+    const $note = document.getElementById("cdNote");
+
+    function pad2(n){ return String(n).padStart(2, "0"); }
+
+    function tick(){
+      const now = new Date();
+      let diff = target.getTime() - now.getTime();
+
+      if (diff <= 0){
+        $dys.textContent = "0";
+        $hrs.textContent = "00";
+        $min.textContent = "00";
+        $sec.textContent = "00";
+        if ($note) $note.textContent = "Obřad právě začíná.";
+        return;
+      }
+
+      const totalSec = Math.floor(diff / 1000);
+      const days = Math.floor(totalSec / 86400);
+      const hours = Math.floor((totalSec % 86400) / 3600);
+      const mins = Math.floor((totalSec % 3600) / 60);
+      const secs = totalSec % 60;
+
+      $dys.textContent = String(days);
+      $hrs.textContent = pad2(hours);
+      $min.textContent = pad2(mins);
+      $sec.textContent = pad2(secs);
+
+      if ($note) $note.textContent = "Penzion Mezi Vinohrady, Hovorany 696 12";
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  </script>
 </body>
 </html>
