@@ -10952,7 +10952,7 @@ header.masthead {
   background-image: url("../assets/img/header-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: center center;
+  background-position: center 22%;
   background-size: cover;
 }
 header.masthead .masthead-subheading {
@@ -11685,7 +11685,7 @@ footer.footer{
 
 
 /* ===========================
-   Harmonogram (timeline)
+   Custom: Harmonogram (timeline)
    - obrázky jako obdélník s kulatými rohy
    =========================== */
 
@@ -11699,7 +11699,7 @@ footer.footer{
   border-radius: 18px;
   overflow: hidden;
   border: 3px solid rgba(255,255,255,.75);
-  background-color: var(--sv-brown);
+  background-color: #8b5e3c;
   box-shadow: 0 14px 34px rgba(0,0,0,.12);
 }
 
@@ -11719,7 +11719,11 @@ footer.footer{
 }
 
 .timeline > li .timeline-image.timeline-end{
+<<<<<<< HEAD
   background-color: var(--sv-lavender);
+=======
+  background-color: #1d6142;
+>>>>>>> parent of 8e8b178 (fds)
   border-color: rgba(255,255,255,.55);
   display: flex;
   align-items: center;
@@ -11733,7 +11737,11 @@ footer.footer{
     margin-left: -115px;
     border-width: 4px;
   }
+  .timeline > li .timeline-image img{
+    border-radius: 18px;
+  }
 }
+<<<<<<< HEAD
 
 
 
@@ -11786,3 +11794,5 @@ footer.footer{
   font-size: 13px;
   color: rgba(31,41,51,.70);
 }
+=======
+>>>>>>> parent of 8e8b178 (fds)
