@@ -11825,3 +11825,17 @@ footer.footer{
   text-transform: uppercase;
   color: rgba(15,23,42,.70);
 }
+
+
+/* === Harmonogram buttons custom green === */
+.timeline-actions .btn-outline-primary{
+  color: #1d6142;
+  border-color: #1d6142;
+  background-color: transparent;
+}
+
+.timeline-actions .btn-outline-primary:hover{
+  background-color: #1d6142;
+  border-color: #1d6142;
+  color: #E6BE8A;
+}
