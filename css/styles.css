@@ -11793,6 +11793,16 @@ footer.footer{
   text-align: center;
   box-shadow: 0 16px 48px rgba(15,23,42,.08);
 }
+.qr-img{
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(15,23,42,.12);
+  background: #fff;
+}
 .qr-placeholder{
   width: 220px;
   height: 220px;
