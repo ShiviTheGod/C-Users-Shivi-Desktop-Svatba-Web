@@ -11401,24 +11401,24 @@ header.masthead .container{
 
 /* ===== Wedding palette + custom layout (navbar/hero/cards/RSVP) ===== */
 :root{
-  --sv-cream: #f7e7ce;
-  --sv-brown: #8b5e3c;
-  --sv-pink:  #d8a7a0;
-  --sv-green: #1d6142;
-  --sv-green-dark: #164a33;
-  --sv-sand:  #e6be8a;
+  --sv-pink:     #f5d6e4; /* Pink Marshmallow */
+  --sv-peach:    #f6cfc2; /* Scallop Shell */
+  --sv-cream:    #f6f0c8; /* Pear Sorbet */
+  --sv-butter:   #cfe3a2; /* Butterfly */
+  --sv-breeze:   #b7d8f0; /* Nantucket Breeze */
+  --sv-lavender: #d7c7e6; /* Lavender Fog */
 
-  --sv-text: #0f172a;
-  --sv-muted: rgba(15,23,42,.72);
-  --sv-line: rgba(15,23,42,.12);
+  --sv-ink: #1f2933;      /* text */
+  --sv-muted: rgba(31,41,51,.72);
+  --sv-line: rgba(31,41,51,.12);
 }
 
 /* Page background inspiration */
 body{
-  background-color: #ffffff;
+  background-color: var(--sv-cream);
 }
 .section-soft{
-  background: var(--sv-cream);
+  background: rgba(246,240,200,.65);
 }
 
 /* ===== Navbar ===== */
@@ -11426,8 +11426,8 @@ nav.navbar{
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--sv-green);
-  border-bottom: 1px solid rgba(255,255,255,.10);
+  background: var(--sv-lavender);
+  border-bottom: 1px solid rgba(31,41,51,.12);
 }
 nav.navbar .nav-inner{
   max-width: 1080px;
@@ -11441,7 +11441,7 @@ nav.navbar .nav-inner{
 nav.navbar .brand{
   font-weight: 800;
   letter-spacing: .08em;
-  color: var(--sv-sand);
+  color: var(--sv-ink);
   text-transform: uppercase;
   font-size: 20px;
   white-space: nowrap;
@@ -11452,7 +11452,7 @@ nav.navbar .nav-links{
   align-items:center;
 }
 nav.navbar .nav-links a{
-  color: rgba(247,231,206,.92);
+  color: rgba(31,41,51,.88);
   text-decoration:none;
   font-weight: 600;
   letter-spacing: .08em;
@@ -11460,7 +11460,7 @@ nav.navbar .nav-links a{
   font-size: 14px;
 }
 nav.navbar .nav-links a:hover{
-  color: var(--sv-sand);
+  color: var(--sv-ink);
 }
 
 /* ===== Hero ===== */
@@ -11488,7 +11488,7 @@ header.hero::before{
 header.hero .hero-content{
   position: relative;
   text-align:center;
-  color: #fff;
+  color: var(--sv-ink);
   max-width: 980px;
 }
 header.hero h2{
@@ -11590,8 +11590,8 @@ header.hero h1{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  background: var(--sv-brown); /* icon circle */
-  color: #fff;
+  background: var(--sv-breeze); /* icon circle */
+  color: var(--sv-ink);
   font-size: 32px;
   margin-bottom: 18px;
 }
@@ -11610,40 +11610,14 @@ header.hero h1{
 
 /* Buttons (used in cards + RSVP) */
 .btn-primary, .btn-outline{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap: 10px;
-  padding: 16px 22px;
-  border-radius: 10px;
-  font-weight: 800;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  text-decoration:none;
-  font-size: 14px;
-  min-width: 260px;
-  transition: transform .14s ease, background-color .14s ease, border-color .14s ease, color .14s ease, box-shadow .14s ease;
-}
-.btn-primary{
-  background: var(--sv-green);
-  border: 2px solid var(--sv-green);
-  color: var(--sv-cream);
-  box-shadow: 0 14px 30px rgba(29,97,66,.18);
-}
-.btn-primary:hover{
-  background: var(--sv-green-dark);
-  border-color: var(--sv-green-dark);
-  color: var(--sv-cream);
-  transform: translateY(-1px);
-}
-.btn-outline{
-  background: rgba(255,255,255,.78);
-  border: 2px solid var(--sv-green);
-  color: var(--sv-green);
+  background: transparent;
+  border: 2px solid var(--sv-lavender);
+  color: var(--sv-ink);
 }
 .btn-outline:hover{
-  background: var(--sv-green);
-  color: var(--sv-cream);
+  background: var(--sv-lavender);
+  border-color: var(--sv-lavender);
+  color: var(--sv-ink);
   transform: translateY(-1px);
 }
 @media (max-width: 520px){
@@ -11667,7 +11641,7 @@ header.hero h1{
   margin: 6px 0 0;
   color: rgba(15,23,42,.78);
 }
-#rsvp .contact a{ color: var(--sv-green); text-decoration:none; }
+#rsvp .contact a{ color: var(--sv-lavender); text-decoration:none; }
 #rsvp .contact a:hover{ text-decoration:underline; }
 
 /* Footer */
@@ -11690,9 +11664,9 @@ footer.footer{
   transition: opacity .16s ease, transform .16s ease;
   padding: 12px 14px;
   border-radius: 999px;
-  border: 2px solid var(--sv-green);
+  border: 2px solid var(--sv-lavender);
   background: rgba(255,255,255,.88);
-  color: var(--sv-green);
+  color: var(--sv-lavender);
   font-weight: 900;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -11704,7 +11678,7 @@ footer.footer{
   transform: translateY(0);
 }
 #scrollTop:hover{
-  background: var(--sv-green);
+  background: var(--sv-lavender);
   color: var(--sv-cream);
 }
 
@@ -11745,7 +11719,7 @@ footer.footer{
 }
 
 .timeline > li .timeline-image.timeline-end{
-  background-color: var(--sv-green);
+  background-color: var(--sv-lavender);
   border-color: rgba(255,255,255,.55);
   display: flex;
   align-items: center;
@@ -11761,3 +11735,54 @@ footer.footer{
   }
 }
 
+
+
+/* ===== Gifts (Dary) ===== */
+.gift-wrap{
+  display:flex;
+  gap: 18px;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.gift-text{
+  max-width: 640px;
+  background: rgba(255,255,255,.70);
+  border: 1px solid var(--sv-line);
+  border-radius: 16px;
+  padding: 18px 18px;
+  color: var(--sv-muted);
+}
+.gift-text p{ margin:0; }
+
+.qr-card{
+  width: 220px;
+  min-height: 180px;
+  background: rgba(255,255,255,.80);
+  border: 1px dashed rgba(31,41,51,.22);
+  border-radius: 16px;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  padding: 14px;
+}
+.qr-placeholder{
+  width: 120px;
+  height: 120px;
+  border-radius: 14px;
+  background: rgba(183,216,240,.45);
+  border: 1px solid rgba(31,41,51,.10);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight: 900;
+  letter-spacing: .12em;
+  color: rgba(31,41,51,.62);
+}
+.qr-note{
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(31,41,51,.70);
+}
