@@ -11761,3 +11761,57 @@ footer.footer{
   }
 }
 
+
+
+/* ===== Gifts (Dary) section ===== */
+.gift-grid{
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  gap: 26px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.gift-text{
+  flex: 1 1 460px;
+  color: var(--sv-muted);
+  line-height: 1.85;
+}
+.gift-text p{ margin: 0 0 14px; }
+.gift-text .gift-muted{
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: .9;
+}
+.gift-qr{
+  flex: 0 0 340px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid var(--sv-line);
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 16px 48px rgba(15,23,42,.08);
+}
+.qr-placeholder{
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 12px;
+  border-radius: 18px;
+  border: 1px dashed rgba(15,23,42,.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  letter-spacing: .22em;
+  color: rgba(15,23,42,.45);
+  background: rgba(247,231,206,.35);
+  user-select: none;
+}
+.qr-caption{
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(15,23,42,.70);
+}
