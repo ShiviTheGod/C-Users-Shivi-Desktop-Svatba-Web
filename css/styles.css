@@ -11827,19 +11827,15 @@ footer.footer{
 }
 
 
-/* === Polished final timeline tile === */
-.timeline-image.timeline-end{
-  background: linear-gradient(145deg,#1d6142,#164a33);
-  border: none;
-  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+/* === Harmonogram buttons custom green === */
+.timeline-actions .btn-outline-primary{
+  color: #1d6142;
+  border-color: #1d6142;
+  background-color: transparent;
 }
 
-.timeline-image.timeline-end h4{
-  margin:0;
-  padding:0 18px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  letter-spacing:.08em;
-  text-transform: uppercase;
-  color:#ffffff;
+.timeline-actions .btn-outline-primary:hover{
+  background-color: #1d6142;
+  border-color: #1d6142;
+  color: #E6BE8A;
 }
