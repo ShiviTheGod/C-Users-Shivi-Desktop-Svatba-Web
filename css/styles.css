@@ -10952,7 +10952,7 @@ header.masthead {
   background-image: url("../assets/img/header-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: center 22%;
+  background-position: center center;
   background-size: cover;
 }
 header.masthead .masthead-subheading {
@@ -11711,7 +11711,7 @@ footer.footer{
 
 
 /* ===========================
-   Custom: Harmonogram (timeline)
+   Harmonogram (timeline)
    - obrázky jako obdélník s kulatými rohy
    =========================== */
 
@@ -11725,7 +11725,7 @@ footer.footer{
   border-radius: 18px;
   overflow: hidden;
   border: 3px solid rgba(255,255,255,.75);
-  background-color: #8b5e3c;
+  background-color: var(--sv-brown);
   box-shadow: 0 14px 34px rgba(0,0,0,.12);
 }
 
@@ -11745,7 +11745,7 @@ footer.footer{
 }
 
 .timeline > li .timeline-image.timeline-end{
-  background-color: #1d6142;
+  background-color: var(--sv-green);
   border-color: rgba(255,255,255,.55);
   display: flex;
   align-items: center;
@@ -11759,7 +11759,5 @@ footer.footer{
     margin-left: -115px;
     border-width: 4px;
   }
-  .timeline > li .timeline-image img{
-    border-radius: 18px;
-  }
 }
+
