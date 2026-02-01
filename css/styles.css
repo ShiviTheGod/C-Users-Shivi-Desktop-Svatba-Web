@@ -11839,3 +11839,19 @@ footer.footer{
   border-color: #1d6142;
   color: #E6BE8A;
 }
+
+
+/* --- Timeline end tile center & typography --- */
+.timeline-image.timeline-end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.timeline-image.timeline-end h4 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
