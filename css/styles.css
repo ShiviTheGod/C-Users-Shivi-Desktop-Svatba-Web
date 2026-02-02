@@ -11715,8 +11715,16 @@ footer.footer{
    - obrázky jako obdélník s kulatými rohy
    =========================== */
 
+.timeline{
+  --tl-image-w: 230px;
+  --tl-image-h: 150px;
+  --tl-image-half: 115px;
+  --tl-image-half-neg: -115px;
+  --tl-image-gap: 24px;
+}
+
 .timeline > li .timeline-panel{
-  padding: 0 20px 0 190px; /* místo pro širší obrázek */
+  padding: 0 20px 0;
 }
 
 .timeline > li .timeline-image{
@@ -11754,10 +11762,58 @@ footer.footer{
 
 @media (min-width: 768px){
   .timeline > li .timeline-image{
-    width: 230px;
-    height: 150px;
-    margin-left: -115px;
+    width: var(--tl-image-w);
+    height: var(--tl-image-h);
+    margin-left: var(--tl-image-half-neg);
     border-width: 4px;
+  }
+  .timeline > li .timeline-panel{
+    width: calc(50% - var(--tl-image-half) - var(--tl-image-gap));
+    padding: 0 20px 20px;
+  }
+  .timeline > li.timeline-inverted > .timeline-panel{
+    width: calc(50% - var(--tl-image-half) - var(--tl-image-gap));
+    padding: 0 20px 20px;
+  }
+}
+
+@media (max-width: 991px){
+  .timeline{
+    --tl-image-gap: 18px;
+  }
+}
+
+@media (max-width: 767px){
+  .timeline:before{
+    display: none;
+  }
+  .timeline > li{
+    display: grid;
+    grid-template-columns: 1fr 160px;
+    gap: 16px;
+    margin-bottom: 32px;
+    min-height: 0;
+    align-items: start;
+  }
+  .timeline > li .timeline-image{
+    position: relative;
+    left: auto;
+    margin: 0;
+    justify-self: end;
+  }
+  .timeline > li .timeline-panel{
+    float: none;
+    width: auto;
+    padding: 0;
+    text-align: left;
+  }
+  .timeline > li .timeline-panel:before,
+  .timeline > li .timeline-panel:after{
+    display: none;
+  }
+  .timeline > li.timeline-inverted > .timeline-panel{
+    padding: 0;
+    text-align: left;
   }
 }
 
