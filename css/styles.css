@@ -11789,7 +11789,7 @@ footer.footer{
   }
   .timeline > li{
     display: grid;
-    grid-template-columns: 1fr 160px;
+    grid-template-columns: minmax(0, 1fr) 160px;
     gap: 16px;
     margin-bottom: 32px;
     min-height: 0;
@@ -11800,12 +11800,15 @@ footer.footer{
     left: auto;
     margin: 0;
     justify-self: end;
+    grid-column: 2;
   }
   .timeline > li .timeline-panel{
     float: none;
     width: auto;
     padding: 0;
     text-align: left;
+    min-width: 0;
+    grid-column: 1;
   }
   .timeline > li .timeline-panel:before,
   .timeline > li .timeline-panel:after{
@@ -11814,6 +11817,7 @@ footer.footer{
   .timeline > li.timeline-inverted > .timeline-panel{
     padding: 0;
     text-align: left;
+    grid-column: 1;
   }
 }
 
