@@ -11425,6 +11425,9 @@ body{
 .section-soft{
   background: var(--sv-cream);
 }
+#rsvp.section-soft{
+  background: #f9e4eb;
+}
 
 /* ===== Navbar ===== */
 nav.navbar{
