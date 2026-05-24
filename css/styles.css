@@ -11882,6 +11882,39 @@ footer.footer{
 
 
 
+/* ===========================
+   Harmonogram – varianta bez obrázků
+   Zapnutí: přidat třídu `timeline-no-images` na <ul class="timeline">.
+   Vypnutí (revert): odstranit tuto třídu nebo přepnout zpět na main branch.
+   =========================== */
+.timeline.timeline-no-images > li .timeline-image {
+  display: none;
+}
+
+.timeline.timeline-no-images > li {
+  min-height: 0;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .timeline.timeline-no-images > li {
+    min-height: 0;
+    margin-bottom: 50px;
+  }
+  .timeline.timeline-no-images > li .timeline-panel,
+  .timeline.timeline-no-images > li.timeline-inverted > .timeline-panel {
+    width: calc(50% - 30px);
+    padding: 10px 30px 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .timeline.timeline-no-images > li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
 /* ===== Gifts (Dary) section ===== */
 .gift-grid{
   max-width: 980px;
